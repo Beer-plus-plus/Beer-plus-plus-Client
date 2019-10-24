@@ -1,9 +1,10 @@
+/* eslint-disable max-classes-per-file */
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
 
 const AuthContext = createContext();
 
-const Provider = AuthContext.Provider;
+const {Provider} = AuthContext;
 
 const AuthConsumer = AuthContext.Consumer;
 
@@ -18,8 +19,9 @@ export const withAuth = (Comp) => {
               isLoggedin,
               user,
               handleLogin,
-              handleLogout
-            }) => <Comp {...this.props} isLoading={isLoading} isLoggedin={isLoggedin} user={user} handleLogin={handleLogin} handleLogout={handleLogout}  />
+              handleLogout,
+              handleSignup
+            }) => <Comp {...this.props} isLoading={isLoading} isLoggedin={isLoggedin} user={user} handleLogin={handleLogin} handleLogout={handleLogout} handleSignup={handleSignup}  />
           }
         </AuthConsumer>
       )
@@ -69,6 +71,22 @@ export default class AuthProvider extends Component {
       })
   }
 
+  handleSignup = (user) => {
+    authService.signup(user)
+      .then((loggedUser) => {
+        this.setState({
+          isLoggedin: true,
+          user: loggedUser,
+          isLoading: false
+        })
+      })
+      .catch(() => {
+        this.setState({
+          isLoading: false
+        })
+      })
+  }
+
   handleLogout = () => {
     this.setState({
       isLoading: true,
@@ -95,7 +113,7 @@ export default class AuthProvider extends Component {
     const { children } = this.props;
     if (isLoading) {
       return <div>Loading...</div>
-    } else {
+    } 
       return (
         <Provider value={{
           isLoading,
@@ -103,10 +121,11 @@ export default class AuthProvider extends Component {
           user,
           handleLogin: this.handleLogin,
           handleLogout: this.handleLogout,
+          handleSignup: this.handleSignup,
         }}>
           {children}
         </Provider>
       )
-    }
+    
   }
 }

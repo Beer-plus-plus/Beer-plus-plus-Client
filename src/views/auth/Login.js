@@ -3,8 +3,8 @@ import { withAuth } from '../../Context/AuthContext';
 
 class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   }
 
   handleChange = (event) => {  
