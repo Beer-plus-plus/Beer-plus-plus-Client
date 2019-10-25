@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 
-
 class Signup extends Component {
   state = {
     username: '',
@@ -14,7 +13,7 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFormSubmit = (e) => {
+  handleFormSubmit = e => {
     e.preventDefault();
     const { username, password } = this.state;
     this.props.handleSignup({ username, password });
