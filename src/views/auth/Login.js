@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Login.css';
 import { withAuth } from '../../Context/AuthContext';
 import Logo from '../../components/Logo';
 
@@ -25,14 +26,20 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
+      <div className="login-container">
         <Logo />
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Login" />
+        <form className="form-container" onSubmit={this.handleFormSubmit}>
+          <div>
+            <label>Username:</label>
+            <input type="text" name="username" value={username} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={this.handleChange} />
+          </div>
+          <div>
+            <input type="submit" value="Login" />
+          </div>
         </form>
       </div>
     );
