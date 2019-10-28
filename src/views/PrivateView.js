@@ -1,11 +1,12 @@
 import React from 'react';
 import {withAuth} from '../Context/AuthContext';
 
-const PrivateView = ({ user }) => {
+const PrivateView = ({ user}) => {
   return (
     <div>
       PrivateView
       user: {user.username}
+      
     </div>
   );
 };
