@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './reset.css'
-import './normalizer.css'
+import './reset.css';
+import './normalizer.css';
 import './App.css';
 
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -18,8 +18,6 @@ class App extends Component {
     const { handleLogout } = this.props;
     return (
       <div className="container">
-        <button onClick={handleLogout}>logout</button>
-
         <Router>
           <AnonRoute exact path="/login" component={Login} />
           <AnonRoute exact path="/signup" component={Signup} />

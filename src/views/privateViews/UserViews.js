@@ -11,7 +11,7 @@ class UserView extends Component {
   }
   
   render() {
-    const { user } = this.props;
+    const { user, handleLogout } = this.props;
     const {oldPass, newPass, confirmPass} = this.state;
   return (
     <div className="container-uservier">
@@ -58,7 +58,7 @@ class UserView extends Component {
       </form>
       <button>Preferred Sites</button>
       <button>Preferred Beers</button>
-      
+      <button onClick={handleLogout}>logout</button>
     </div>
   );
 }
