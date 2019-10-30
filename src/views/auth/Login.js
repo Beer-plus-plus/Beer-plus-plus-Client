@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 import { withAuth } from '../../Context/AuthContext';
 import Logo from '../../components/Logo';
@@ -41,6 +42,10 @@ class Login extends Component {
             <input type="submit" value="Login" />
           </div>
         </form>
+        <p>
+          If you don't have an account yet,
+          <Link to={'/signup'}>Signup</Link>
+        </p>
       </div>
     );
   }

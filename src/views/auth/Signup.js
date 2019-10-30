@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 import './Signup.css';
+import Logo from '../../components/Logo';
 
 class Signup extends Component {
   state = {
@@ -25,6 +26,7 @@ class Signup extends Component {
     const { username, password, email } = this.state;
     return (
       <div className="container-signup">
+        <Logo />
         <form onSubmit={this.handleFormSubmit}>
           <div>
             <label htmlFor="username">Username:</label>
@@ -45,7 +47,7 @@ class Signup extends Component {
 
         <p>
           Already have account?
-          <Link to={'/login'}>Login</Link>
+          <Link to={'/'}>Login</Link>
         </p>
       </div>
     );

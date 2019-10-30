@@ -19,7 +19,8 @@ class App extends Component {
     return (
       <div className="container">
         <Router>
-          <AnonRoute exact path="/login" component={Login} />
+          {/* <AnonRoute exact path="/login" component={Login} /> */}
+          <AnonRoute exact path="/" component={Login} />
           <AnonRoute exact path="/signup" component={Signup} />
           <PrivateRoute exact path="/user" component={UserView} />
         </Router>
