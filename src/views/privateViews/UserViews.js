@@ -8,7 +8,6 @@ class UserView extends Component {
     oldPass: this.props.user.password,
     newPass: '',
     confirmPass: '',
-    username: this.props.user.username,
     name: this.props.user.name,
     lastname: this.props.user.lastname,
     email: this.props.user.email,
@@ -21,22 +20,17 @@ class UserView extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const { username, name, lastname, email } = this.state;
-    userService.userUpdate(this.props.user._id, username, name, lastname, email);
+    const { name, lastname, email } = this.state;
+    userService.userUpdate(this.props.user._id, name, lastname, email);
   };
 
   render() {
     const { handleLogout, user } = this.props;
-    const { oldPass, newPass, confirmPass, username, name, lastname, email } = this.state;
+    const { oldPass, newPass, confirmPass, name, lastname, email } = this.state;
     return (
       <div className="container-uservier">
         <h1>{user.username}'s PROFILE</h1>
-        <p>UserView user: {user.username}</p>
         <form onSubmit={this.handleFormSubmit}>
-          <div>
-            <label htmlFor="username">User</label>
-            <input type="text" name="username" required value={username} onChange={this.handleChange} />
-          </div>
           <div>
             <label htmlFor="name">name</label>
             <input type="text" name="name" required value={name} onChange={this.handleChange} />

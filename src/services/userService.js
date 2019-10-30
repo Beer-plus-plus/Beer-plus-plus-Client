@@ -10,15 +10,11 @@ class UserService {
   //   //   return this.userconnet.get(`/api/user/${user._id}`);
   // }
 
-  userUpdate(id,username, name, lastname, email){
-    console.log(id);
-   return this.userConnect.put(`/api/user/${id}`,{username, name, lastname, email})
-   .then(({data:user})=> user)
+  async userUpdate(id, name, lastname, email) {
+    const { data: user } = await this.userConnect.put(`/api/user/${id}`, { name, lastname, email });
+    return user;
   }
-  
 }
-
-
 
 const userService = new UserService();
 export default userService;
