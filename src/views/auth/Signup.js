@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
+import './Signup.css';
 
 class Signup extends Component {
   state = {
     username: '',
     password: '',
+    email: '',
   };
 
   handleChange = event => {
@@ -15,20 +17,30 @@ class Signup extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const { username, password } = this.state;
-    this.props.handleSignup({ username, password });
+    const { username, password, email } = this.state;
+    this.props.handleSignup({ username, password, email });
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, email } = this.state;
     return (
-      <div>
+      <div className="container-signup">
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input type="text" name="username" required value={username} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label htmlFor="email">email</label>
+            <input type="email" name="email" required value={email} onChange={this.handleChange} />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input type="password" name="password" required value={password} onChange={this.handleChange} />
+          </div>
+          <div>
+            <input type="submit" value="Signup" />
+          </div>
         </form>
 
         <p>

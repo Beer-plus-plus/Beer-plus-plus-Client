@@ -1,8 +1,12 @@
+
+
 .login-container {
     width: 100%;
     display:flex;
     flex-direction:column;
     justify-content:center;
+    margin:0 10px;
+    font-family: 'Baloo Tamma', cursive;
 }
 
 .form-container {

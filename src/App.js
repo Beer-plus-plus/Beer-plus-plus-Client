@@ -5,7 +5,7 @@ import './App.css';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import UserView from './views/UserView';
+import UserView from './views/privateViews/UserViews';
 import Login from './views/auth/Login';
 import Signup from './views/auth/Signup';
 import { withAuth } from './Context/AuthContext';
@@ -23,7 +23,7 @@ class App extends Component {
         <Router>
           <AnonRoute exact path="/login" component={Login} />
           <AnonRoute exact path="/signup" component={Signup} />
-          <PrivateRoute exact path="/private" component={UserView} />
+          <PrivateRoute exact path="/user" component={UserView} />
         </Router>
       </div>
     );
