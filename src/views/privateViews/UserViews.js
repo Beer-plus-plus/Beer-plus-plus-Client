@@ -5,12 +5,10 @@ import userService from '../../services/userService';
 
 class UserView extends Component {
   state = {
-    oldPass: this.props.user.password,
+    user: {},
     newPass: '',
     confirmPass: '',
-    name: this.props.user.name,
-    lastname: this.props.user.lastname,
-    email: this.props.user.email,
+    loading: true,
   };
 
   handleChange = e => {
@@ -24,13 +22,36 @@ class UserView extends Component {
     userService.userUpdate(this.props.user._id, name, lastname, email);
   };
 
+  handleFormSubmitpass = e =>{
+
+  }
+
+  async componentDidMount() {
+    const {
+      user: {_id },
+    } = this.props;
+    try {
+      const user = await userService.userGetDetail(_id);
+      this.setState({ user, loading: false }, ()=>{ console.log(this.state.user)});
+      
+    } catch (error) {
+      this.setState({ loading: false });
+    }
+  }
+
   render() {
-    const { handleLogout, user } = this.props;
-    const { oldPass, newPass, confirmPass, name, lastname, email } = this.state;
+    const { handleLogout } = this.props;
+    const {
+      newPass,
+      confirmPass,
+      user: { username, password, name, lastname, email },
+    } = this.state;
+
     return (
       <div className="container-uservier">
-        <h1>{user.username}'s PROFILE</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <h1>USER PROFILE</h1>
+        <p>Username: {username}</p>
+        <form  onSubmit={this.handleFormSubmit}>
           <div>
             <label htmlFor="name">name</label>
             <input type="text" name="name" required value={name} onChange={this.handleChange} />
@@ -50,10 +71,10 @@ class UserView extends Component {
 
         <button>Add profile image</button>
 
-        <form>
+        <form onSubmit={this.handleFormSubmitpass}>
           <div>
             <label htmlFor="oldPass">Password</label>
-            <input type="password" name="oldPass" required value={oldPass} onChange={this.handleChange} />
+            <input type="password" name="oldPass" required value={password} onChange={this.handleChange} />
           </div>
           <div>
             <label htmlFor="newPass">New password</label>
