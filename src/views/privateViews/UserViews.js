@@ -50,17 +50,17 @@ class UserView extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <div>
             <label htmlFor="name">name</label>
-            <input type="text" name="name" value={user.name} onChange={this.handleChange} />
+            <input type="text" name="name" placeholder="your name" value={user.name} onChange={this.handleChange} />
           </div>
 
           <div>
             <label htmlFor="lastName">Last name</label>
-            <input type="text" name="lastName" value={user.lastName} onChange={this.handleChange} />
+            <input type="text" name="lastName"  placeholder="your Last name" value={user.lastName} onChange={this.handleChange} />
           </div>
 
           <div>
             <label htmlFor="email">email</label>
-            <input type="text" name="email" required value={user.email} onChange={this.handleChange} />
+            <input type="text" name="email" placeholder="your mail" required value={user.email} onChange={this.handleChange} />
           </div>
           <div>
             <input type="submit" value="Update"></input>
