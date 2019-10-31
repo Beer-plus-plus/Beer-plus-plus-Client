@@ -15,7 +15,7 @@ import AnonRoute from './components/AnonRoute';
 
 class App extends Component {
   render() {
-    const { handleLogout } = this.props;
+    const { handleLogout} = this.props;
     return (
       <div className="container">
         <Router>

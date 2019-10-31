@@ -12,20 +12,24 @@ class UserView extends Component {
   };
 
   handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { user } = this.state;
+    this.setState({ user: { ...user, [e.target.name]: e.target.value } });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
-    const { name, lastName, email } = this.state;
+    const {
+      user: { name, lastName, email },
+    } = this.state;
     userService.userUpdate(this.props.user._id, name, lastName, email);
   };
 
   handleFormSubmitpass = e => {};
 
   async componentDidMount() {
-    const {user: { _id }} = this.props;
+    const {
+      user: { _id },
+    } = this.props;
     try {
       const newUser = await userService.userGetDetail(_id);
       this.setState({ user: newUser, loading: false });
@@ -34,12 +38,11 @@ class UserView extends Component {
     }
   }
 
-
   render() {
     const { handleLogout } = this.props;
     const { newPass, confirmPass, user, loading } = this.state;
     return (
-      <div className="container-uservier">
+      <div className="container-userview">
         <h1>USER PROFILE</h1>
         <p>Username: {user.username}</p>
         <form onSubmit={this.handleFormSubmit}>
@@ -47,10 +50,12 @@ class UserView extends Component {
             <label htmlFor="name">name</label>
             <input type="text" name="name" value={user.name} onChange={this.handleChange} />
           </div>
+
           <div>
             <label htmlFor="lastName">Last name</label>
             <input type="text" name="lastName" value={user.lastName} onChange={this.handleChange} />
           </div>
+
           <div>
             <label htmlFor="email">email</label>
             <input type="text" name="email" required value={user.email} onChange={this.handleChange} />
@@ -62,7 +67,7 @@ class UserView extends Component {
 
         <button>Add profile image</button>
 
-        <form onSubmit={this.handleFormSubmitpass}>
+        {/* <form onSubmit={this.handleFormSubmitpass}>
           <div>
             <label htmlFor="oldPass">Password</label>
             <input type="password" name="oldPass" required value={user.password} onChange={this.handleChange} />
@@ -76,7 +81,7 @@ class UserView extends Component {
             <input type="password" name="confirmPass" required value={confirmPass} onChange={this.handleChange} />
           </div>
           <input type="submit" value="Change password"></input>
-        </form>
+        </form> */}
         <button>Preferred Sites</button>
         <button>Preferred Beers</button>
         <button onClick={handleLogout}>logout</button>

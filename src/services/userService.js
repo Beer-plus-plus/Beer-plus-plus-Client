@@ -10,9 +10,10 @@ class UserService {
   }
 
   async userUpdate(id, name, lastName, email) {
-            const { data: user } = await this.userConnect.put(`/api/user/${id}`, { name, lastName, email });
-            console.log(user);
-    return user;
+    try {
+      await this.userConnect.put(`/api/user/${id}`, { name, lastName, email });
+      console.log(id, name, lastName, email)
+    } catch (error) {}
   }
 }
 
