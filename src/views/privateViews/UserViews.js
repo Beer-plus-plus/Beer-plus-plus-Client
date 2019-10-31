@@ -22,6 +22,8 @@ class UserView extends Component {
       user: { name, lastName, email },
     } = this.state;
     userService.userUpdate(this.props.user._id, name, lastName, email);
+    const {user: newUser} = this.state;
+    this.setState({ user: { ...newUser}});
   };
 
   handleFormSubmitpass = e => {};
@@ -32,7 +34,7 @@ class UserView extends Component {
     } = this.props;
     try {
       const newUser = await userService.userGetDetail(_id);
-      this.setState({ user: newUser, loading: false });
+      this.setState({ user: {...newUser}, loading: false });
     } catch (error) {
       this.setState({ loading: false });
     }
@@ -67,7 +69,7 @@ class UserView extends Component {
 
         <button>Add profile image</button>
 
-        {/* <form onSubmit={this.handleFormSubmitpass}>
+       {/* <form onSubmit={this.handleFormSubmitpass}>
           <div>
             <label htmlFor="oldPass">Password</label>
             <input type="password" name="oldPass" required value={user.password} onChange={this.handleChange} />

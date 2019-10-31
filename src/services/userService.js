@@ -12,8 +12,7 @@ class UserService {
   async userUpdate(id, name, lastName, email) {
     try {
       await this.userConnect.put(`/api/user/${id}`, { name, lastName, email });
-      console.log(id, name, lastName, email)
-    } catch (error) {}
+        } catch (error) {}
   }
 }
 
