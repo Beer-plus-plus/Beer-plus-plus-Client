@@ -5,12 +5,13 @@ class UserService {
     this.userConnect = axios.create({ baseURL: process.env.REACT_APP_BACKEND_BASE_URL, withCredentials: true });
   }
 
- async userGetDetail(id) {
-     return this.userConnet.get(`/api/user/${id}`);
+  userGetDetail(id) {
+    return this.userConnect.get(`/api/user/${id}`).then(({ data: user }) => user);
   }
 
-  async userUpdate(id, name, lastname, email) {
-    const { data: user } = await this.userConnect.put(`/api/user/${id}`, { name, lastname, email });
+  async userUpdate(id, name, lastName, email) {
+            const { data: user } = await this.userConnect.put(`/api/user/${id}`, { name, lastName, email });
+            console.log(user);
     return user;
   }
 }
