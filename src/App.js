@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './reset.css';
 import './normalizer.css';
 import './App.css';
@@ -13,9 +13,8 @@ import { withAuth } from './Context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 
-class App extends Component {
-  render() {
-    const { handleLogout} = this.props;
+const App = () => {
+ 
     return (
       <div className="container">
         <Router>
@@ -27,6 +26,6 @@ class App extends Component {
       </div>
     );
   }
-}
+
 
 export default withAuth(App);
