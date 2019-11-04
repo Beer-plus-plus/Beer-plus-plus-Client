@@ -27,7 +27,7 @@ class Signup extends Component {
     return (
       <div className="container-signup">
         <Logo />
-        <form onSubmit={this.handleFormSubmit}>
+        <form>
           <div>
             <label htmlFor="username">Username:</label>
             <input type="text" name="username" required value={username} onChange={this.handleChange} />
@@ -40,8 +40,8 @@ class Signup extends Component {
             <label htmlFor="password">Password:</label>
             <input type="password" name="password" required value={password} onChange={this.handleChange} />
           </div>
-          <div>
-            <input type="submit" value="Signup" />
+          <div >
+          <input type='image' value='submit' src='signup.svg' alt='submit Button' title="User Login" style={{width: '50px'}} onClick={this.handleFormSubmit}/>
           </div>
         </form>
 

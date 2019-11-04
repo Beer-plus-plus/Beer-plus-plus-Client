@@ -38,8 +38,8 @@ class Login extends Component {
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <div style={{width:'50px'}}>
-          <input type='image' value='submit' src='login.svg' alt='submit Button' title="User Login" onClick={this.handleFormSubmit}/>
+          <div >
+          <input type='image' value='submit' src='login.svg' alt='submit Button' title="User Login" style={{width: '50px'}} onClick={this.handleFormSubmit}/>
           </div>
         </form>
         <p>
