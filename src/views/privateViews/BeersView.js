@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './beersView.css';
-import beerService from '../../services/beersService';
+import beersService from '../../services/beersService';
 import BeerCard from '../../components/BeerCard'
 import { withAuth } from '../../Context/AuthContext';
 
@@ -13,7 +13,8 @@ state = {
 
 async componentDidMount() {
   try {
-    const beers = await beerService.getAllBeers();
+    const beers = await beersService.getAllBeers();
+    console.log('que hay aqui',beers);
     this.setState({ beers: [...beers] });
   } catch (error) {
     console.log(error);
