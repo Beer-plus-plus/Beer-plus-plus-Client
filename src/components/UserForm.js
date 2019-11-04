@@ -17,8 +17,7 @@ class UserForm extends Component {
     const {
       user: { name, lastName, email },
     } = this.state;
-    console.log('this is the name', name);
-    userService.userUpdate(this.props.user._id, name, lastName, email);
+       userService.userUpdate(this.props.user._id, name, lastName, email);
     const { user: newUser } = this.state;
     this.setState({ user: { ...newUser } }, console.log(this.state.user));
   };

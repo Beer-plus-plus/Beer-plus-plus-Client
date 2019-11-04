@@ -29,7 +29,7 @@ class Login extends Component {
     return (
       <div className="login-container">
         <Logo />
-        <form className="form-container" onSubmit={this.handleFormSubmit}>
+        <form className="form-container" >
           <div>
             <label>Username:</label>
             <input type="text" name="username" value={username} onChange={this.handleChange} />
@@ -38,8 +38,8 @@ class Login extends Component {
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <div>
-            <input type="submit" value="Login" />
+          <div style={{width:'50px'}}>
+          <input type='image' value='submit' src='login.svg' alt='submit Button' title="User Login" onClick={this.handleFormSubmit}/>
           </div>
         </form>
         <p>

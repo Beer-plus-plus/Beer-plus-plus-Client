@@ -6,7 +6,8 @@ class UserService {
   }
 
   async userGetDetail(id) {
-    return await this.userConnect.get(`/api/user/${id}`).then(({ data: user }) => user);
+    const { data: user } = await this.userConnect.get(`/api/user/${id}`);
+    return user;
   }
 
   async userUpdate(id, name, lastName, email) {
@@ -18,12 +19,24 @@ class UserService {
   }
 
   async userUpdatePass(id, oldPass, newPass) {
-    try{
-     await this.userConnect.put(`/api/user/${id}/changePass`,{oldPass, newPass});
-    }
-    catch(error){
+    try {
+      await this.userConnect.put(`/api/user/${id}/changePass`, { oldPass, newPass });
+    } catch (error) {
       console.log(error);
     }
+  }
+
+  errorHandler = err => {
+    // console.error(err);
+    throw err;
+  };
+  /* , uploader.single('imageUrl') */
+
+  handleUpload(id, theFile) {
+    return this.userConnect
+      .put(`/api/user/${id}/upload`, theFile)
+      .then(res => res.data)
+      .catch(this.errorHandler);
   }
 }
 
