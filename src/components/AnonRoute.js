@@ -10,6 +10,7 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
         !isLoggedin ? (
           <Comp {...props} />
         ) : (
+          /* beers read api */
           <Redirect
             to={{
               pathname: '/central',

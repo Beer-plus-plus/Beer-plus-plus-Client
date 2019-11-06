@@ -1,23 +1,24 @@
-import axios from "axios";
+import axios from 'axios';
 
 class BeerService {
+  constructor() {
+    this.beers = axios.create({ baseURL: process.env.REACT_APP_BACKEND_BASE_URL, withCredentials: true });
+  }
 
-    constructor() {
-        this.beers = axios.create({
-          baseURL: "https://sandbox-api.brewerydb.com/v2"
-        });
-      }
+  async getAllBeers(index) {
+    if (index < 1) {
+      index = 1;
+    }
+    try {
+      const allBeers = await this.beers.get(`/api/beer/${ index }`);
+      const { data:{beers }, numberOfPages} = allBeers;
+      console.log('aqui estan las cervezas  ', allBeers.data.beers);
+      return ({beers,numberOfPages});
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-     async getAllBeers () {
-         try{
-           console.log('hey hey hey',process.env.SANDBOX_KEY_BREWERYDB)
-         const beers = await this.beers.get(`/beers/?key=${SANDBOX_KEY_BREWERYDB}`);
-         console.log('esto es lo que hay aqui', beers);
-         return beers;}
-         catch(error){
-           console.log(error);
-         }
-     }
 
 }
 

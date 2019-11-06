@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../../Context/AuthContext';
 
+
 class Central extends Component {
+
+
   render() {
-    return (
+ return (
       <div>
         <Link to="/beers">
           <img src="beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>

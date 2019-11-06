@@ -10,6 +10,7 @@ import BeersView from './views/privateViews/BeersView';
 import CentralView from './views/privateViews/CentralView';
 import Login from './views/auth/Login';
 import Signup from './views/auth/Signup';
+import BeerApiDetail from './components/BeerApiDetail'
 import { withAuth } from './Context/AuthContext';
 
 import PrivateRoute from './components/PrivateRoute';
@@ -24,6 +25,7 @@ const App = () => {
         <PrivateRoute exact path="/user" component={UserView} />
         <PrivateRoute exact path="/beers" component={BeersView} />
         <PrivateRoute exact path="/central" component={CentralView} />
+        <PrivateRoute exact path="/beers/api/:id" component={BeerApiDetail}/>
       </Router>
     </div>
   );
