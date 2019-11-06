@@ -6,10 +6,7 @@ class BeerService {
   }
 
   async getAllBeers(index) {
-    if (index < 1) {
-      index = 1;
-    }
-    try {
+      try {
       const allBeers = await this.beers.get(`/api/beer/${index}`);
       const {
         data: { beers },

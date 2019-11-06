@@ -61,7 +61,9 @@ class BeersView extends Component {
         this.setState({ loading: true });
     console.log (this.state.loading);
     try {
-      const { beers, numberOfPages } = await beersService.getAllBeers(1);
+      const data= await beersService.getAllBeers(1);
+      const { beers, numberOfPages} = data;
+      console.log(data)
       this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
       console.log (this.state.loading);
     } catch (error) {
