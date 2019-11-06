@@ -17,15 +17,14 @@ class UserPass extends Component {
     e.preventDefault();
     const { oldPass, newPass, confirmPass } = this.state;
     console.log(oldPass, newPass, confirmPass);
-    if (newPass === confirmPass && newPass!== oldPass) {
+    if (newPass === confirmPass && newPass !== oldPass) {
       userService.userUpdatePass(this.props.user._id, oldPass, newPass);
       this.setState({ oldPass: '', newPass: '', confirmPass: '' });
     }
   };
 
   render() {
-    const { user } = this.props;
-    const { oldPass, newPass, confirmPass } = this.state;
+    const { newPass, confirmPass } = this.state;
     return (
       <form onSubmit={this.handleForm}>
         <div>

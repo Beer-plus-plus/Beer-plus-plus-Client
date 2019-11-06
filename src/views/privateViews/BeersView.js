@@ -13,20 +13,22 @@ class BeersView extends Component {
     maxPage: 0,
   };
 
-  handleChange = e => {
-    e.preventDefault();
-    //   let beers = [...this.props.beersApi];
-    //  const { name, value } = e.target;
-    //   const { beersNow } = this.state;
-    //   if (value !== "") {
-    //     beers = beersNow.filter(aBeer => {
-    //       return aBeer.nameDisplay.toLowerCase().indexOf(value.toLowerCase()) !== -1;
-    //     });
-    //   }
-    //     this.setState({ [name]: value, showFood: [...beers] });
-  };
+  // handleChange = e => {
+  //   e.preventDefault();
+  //   //   let beers = [...this.props.beersApi];
+  //   //  const { name, value } = e.target;
+  //   //   const { beersNow } = this.state;
+  //   //   if (value !== "") {
+  //   //     beers = beersNow.filter(aBeer => {
+  //   //       return aBeer.nameDisplay.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+  //   //     });
+  //   //   }
+  //   //     this.setState({ [name]: value, showFood: [...beers] });
+  // };
 
   downPage = () => {
+
+    if (!this.state.loading){
     const { index } = this.state;
     this.setState({ loading: true, index: index - 1 });
     beersService
@@ -37,6 +39,7 @@ class BeersView extends Component {
       .catch(error => {
         console.log(error);
       });
+    }
   };
 
   upPage = () => {
@@ -49,28 +52,31 @@ class BeersView extends Component {
       })
       .catch(error => {
         console.log(error);
+        this.setState({ loading: false });
       });
-  };
+    }
+ 
 
-  componentDidMount() {
-    this.setState({ loading: true });
-    beersService
-      .getAllBeers(1)
-      .then(({ beers, numberOfPages }) => {
-        console.log('hello', beers);
-        this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  componentDidMount = async ()  => {
+        this.setState({ loading: true });
+    console.log (this.state.loading);
+    try {
+      const { beers, numberOfPages } = await beersService.getAllBeers(1);
+      this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
+      console.log (this.state.loading);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
     const { beersNow, loading } = this.state;
+
     return (
       <div className="container-beersView">
         <h1>Beerpedia</h1>
-        {!loading ? (
+        
+        {!loading ? 
           <div>
             <button onClick={this.downPage}> Page before</button>
             <button onClick={this.upPage}>Next Page</button>
@@ -88,21 +94,24 @@ class BeersView extends Component {
               })}
             </div>
           </div>
-        ) : (
+         : 
           <div>
-            <img src="loading2.gif"></img>
+            <img src="loading2.gif" alt="beer loading"></img>
           </div>
-        )}{' '}
+      }
+
         <div>
           <Link to="/user">
             <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
           </Link>
+
           <button onClick={this.props.handleLogout} style={{ border: 'none', background: 'transparent' }}>
             <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
           </button>
+
         </div>
-      </div>
-    );
+
+      </div> )
   }
 }
 

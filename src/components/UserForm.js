@@ -3,8 +3,8 @@ import userService from '../services/userService';
 
 class UserForm extends Component {
   state = {
-    user: {},
-    loading: true,
+    user: undefined,
+    loading: true
   };
 
   handleChange = e => {
@@ -35,7 +35,7 @@ class UserForm extends Component {
   }
 
   render() {
-    const { user, loading } = this.state;
+    const { user } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div>

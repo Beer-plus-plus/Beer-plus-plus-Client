@@ -10,16 +10,16 @@ class BeerService {
       index = 1;
     }
     try {
-      const allBeers = await this.beers.get(`/api/beer/${ index }`);
-      const { data:{beers }, numberOfPages} = allBeers;
-      console.log('aqui estan las cervezas  ', allBeers.data.beers);
-      return ({beers,numberOfPages});
+      const allBeers = await this.beers.get(`/api/beer/${index}`);
+      const {
+        data: { beers },
+        numberOfPages,
+      } = allBeers;
+      return { beers, numberOfPages };
     } catch (error) {
       console.log(error);
     }
   }
-
-
 }
 
 const beerService = new BeerService();

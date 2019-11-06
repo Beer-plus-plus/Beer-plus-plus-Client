@@ -32,12 +32,12 @@ class AddImage extends Component {
   };
 
   render() {
-    const { user } = this.props;
-    const { imageUrl } = this.state;
+    // const { user } = this.props;
+    // const { imageUrl } = this.state;
      return (
       <div>
         <h2>Image Profile</h2>
-        <img src={this.props.user.img.imageUrl} alt="User image" style={{ width: '50px' }}></img>
+        <img src={this.props.user.img.imageUrl} alt="User profile" style={{ width: '50px' }}></img>
         <form onSubmit={this.handleSubmitFileUpload} encType="multipart/form-data">
           <label>Name</label>
           <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
