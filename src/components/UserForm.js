@@ -3,8 +3,8 @@ import userService from '../services/userService';
 
 class UserForm extends Component {
   state = {
-    user: undefined,
-    loading: true
+    user: {},
+    loading: true,
   };
 
   handleChange = e => {
@@ -17,16 +17,17 @@ class UserForm extends Component {
     const {
       user: { name, lastName, email },
     } = this.state;
-       userService.userUpdate(this.props.user._id, name, lastName, email);
+    userService.userUpdate(this.props.user._id, name, lastName, email);
     const { user: newUser } = this.state;
     this.setState({ user: { ...newUser } }, console.log(this.state.user));
   };
 
   async componentDidMount() {
+    this.setState({loading:true})
     const {
       user: { _id },
     } = this.props;
-    try {
+   try {
       const newUser = await userService.userGetDetail(_id);
       this.setState({ user: { ...newUser }, loading: false });
     } catch (error) {
@@ -35,8 +36,9 @@ class UserForm extends Component {
   }
 
   render() {
-    const { user } = this.state;
-    return (
+    const { user, loading } = this.state;
+    return (<div>
+      {!loading ? (
       <form onSubmit={this.handleFormSubmit}>
         <div>
           <label htmlFor="name">name</label>
@@ -68,8 +70,13 @@ class UserForm extends Component {
         <div>
           <input type="submit" value="Update"></input>
         </div>
-      </form>
-    );
+      </form>) : (
+          <div>
+            <img src="loading2.gif" alt="beer loading"></img>
+          </div>
+        )}
+
+   </div> );
   }
 }
 

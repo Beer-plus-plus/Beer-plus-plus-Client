@@ -6,13 +6,22 @@ class BeerService {
   }
 
   async getAllBeers(index) {
-      try {
+    try {
       const allBeers = await this.beers.get(`/api/beer/${index}`);
       const {
-        data: { beers },
-        numberOfPages,
+        data: { beers, numberOfPages },
       } = allBeers;
       return { beers, numberOfPages };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getBeerDetail(id) {
+    console.log('la id es',id)
+    try {
+      const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
+      return aBeer;
     } catch (error) {
       console.log(error);
     }
