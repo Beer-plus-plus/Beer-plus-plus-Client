@@ -29,9 +29,12 @@ class BeerApiDetail extends Component {
         {!loading ? (
           <div>
             <h1>Beer Detail</h1>
-            <h2>{beer.nameDisplay}</h2>
-            <h2>{beer.style.description}</h2>
-            <h2>{beer.style.name}</h2>
+            <h2>Name:{beer.nameDisplay}</h2>
+            <div></div>
+            <h2>Description: {beer.style.description}</h2>
+            <div></div>
+            <h2>Beer style: {beer.style.name}</h2>
+            <div></div>
           </div>
         ) : (
           <div>

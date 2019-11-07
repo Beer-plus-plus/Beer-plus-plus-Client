@@ -21,6 +21,7 @@ class BeerService {
     console.log('la id es',id)
     try {
       const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
+      console.log(aBeer);
       return aBeer;
     } catch (error) {
       console.log(error);

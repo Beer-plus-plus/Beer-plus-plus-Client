@@ -30,11 +30,11 @@ class Login extends Component {
       <div className="login-container">
         <Logo />
         <form className="form-container" >
-          <div>
+          <div className="user-container">
             <label>Username:</label>
             <input type="text" name="username" value={username} onChange={this.handleChange} />
           </div>
-          <div>
+          <div className="user-container">
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} />
           </div>

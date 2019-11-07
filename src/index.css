@@ -5,6 +5,7 @@ body {
   font-family: 'Baloo Tamma', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#FF9E30;
 }
 
 code {
