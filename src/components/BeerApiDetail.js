@@ -12,24 +12,26 @@ class BeerApiDetail extends Component {
     this.setState({ loading: true });
     const { id } = this.props.match.params;
     try {
-      const beer = await beerService.getBeerDetail(id);
-      this.setState({ beer: [...beer], loading: false });
+      const data = await beerService.getBeerDetail(id);
+      const { data: beer } = data;
+      this.setState({ beer: { ...beer }, loading: false }, () => {
+        console.log(this.state.beer);
+      });
     } catch (error) {
       console.log(error);
     }
   };
 
   render() {
-    // const { beerApi } = this.props;
-    const {beer, loading}= this.state;
-    // const { id } = this.props.match.params;
-    // const beer = beerApi.indexOf((aBeer)=>{return aBeer.id  === id});
+    const { beer, loading } = this.state;
     return (
       <div>
         {!loading ? (
           <div>
-            <h1>{beer.nameDisplay}</h1>
             <h1>Beer Detail</h1>
+            <h2>{beer.nameDisplay}</h2>
+            <h2>{beer.style.description}</h2>
+            <h2>{beer.style.name}</h2>
           </div>
         ) : (
           <div>
