@@ -10,6 +10,7 @@
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "serve": "^11.2.0",
     "untappd-js": "^1.0.3"
   },
   "scripts": {
