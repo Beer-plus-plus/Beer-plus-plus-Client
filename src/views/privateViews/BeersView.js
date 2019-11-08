@@ -76,8 +76,9 @@ class BeersView extends Component {
     this.setState({ loading: true });
    beersService
       .getAllBeers()
-      .then(({beers}) => {
-        this.setState({ beersNow: [...beers], loading: false,  });
+      .then((beers) => {
+        console.log('estas son todas las cervezas', beers)
+        this.setState({ beersNow: [...beers] }, ()=>{this.setState({loading:false})});
       })
       .catch(error => {
         console.log(error);
