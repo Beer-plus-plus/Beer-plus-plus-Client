@@ -59,13 +59,25 @@ class BeersView extends Component {
       });
   };
 
+  // componentDidMount = () => {
+  //   this.setState({ loading: true });
+  //   const newIndex = this.state.index;
+  //   beersService
+  //     .getAllBeers(newIndex)
+  //     .then(({ beers, numberOfPages }) => {
+  //       this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
+
   componentDidMount = () => {
     this.setState({ loading: true });
-    const newIndex = this.state.index;
-    beersService
-      .getAllBeers(newIndex)
-      .then(({ beers, numberOfPages }) => {
-        this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
+   beersService
+      .getAllBeers()
+      .then(({beers}) => {
+        this.setState({ beersNow: [...beers], loading: false,  });
       })
       .catch(error => {
         console.log(error);

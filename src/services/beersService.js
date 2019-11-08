@@ -5,13 +5,26 @@ class BeerService {
     this.beers = axios.create({ baseURL: process.env.REACT_APP_BACKEND_BASE_URL, withCredentials: true });
   }
 
-  async getAllBeers(index) {
+  // async getAllBeers(index) {
+  //   try {
+  //     const allBeers = await this.beers.get(`/api/beer/${index}`);
+  //     const {
+  //       data: { beers, numberOfPages },
+  //     } = allBeers;
+  //     return { beers, numberOfPages };
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+
+  async getAllBeers() {
     try {
-      const allBeers = await this.beers.get(`/api/beer/${index}`);
+      const allBeers = await this.beers.get('/api/beer/');
       const {
-        data: { beers, numberOfPages },
+        data: { beers},
       } = allBeers;
-      return { beers, numberOfPages };
+      return { beers};
     } catch (error) {
       console.log(error);
     }

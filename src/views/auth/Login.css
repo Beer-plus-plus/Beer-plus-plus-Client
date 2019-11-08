@@ -1,5 +1,5 @@
 .login-container {
-        width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,17 +18,26 @@
     width: 50px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin-bottom: 0 auto 40px auto;
     align-items: center;
+    
 }
 
 .user-container input {
+    font-family: 'Baloo Tamma', cursive;
+    font-size: 16px;
     width: 200px;
     border-radius: 20px;
-    margin-left:30px;
+    margin-left: 15px;
+    text-align: center;
+    border: 4px black;
+    border-style: solid;
+    padding: 5px;
 }
+
 .user-container label {
-    width: 100px;
-    margin-left: 20px;
-    line-height: 35%;
+width: 100px;
+margin-left: 20px;
+line-height: 35%;
+font-size:16px;
 }
