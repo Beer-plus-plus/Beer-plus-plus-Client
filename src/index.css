@@ -1,14 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Tamma&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Tamma &display=swap');
 
 body {
-  margin: 0;
-  font-family: 'Baloo Tamma', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background:#FF9E30;
-}
+    margin: 0;
+    font-family: 'Baloo Tamma', cursive;
+ }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
