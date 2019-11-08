@@ -27,24 +27,24 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div className="login-container">
+      <div className="login-container margin-login">
         <Logo />
-        <form className="form-container" >
-          <div className="user-container">
-            <label>Username:</label>
-            <input type="text" name="username" value={username} onChange={this.handleChange} />
+        <form className="form-container" style={{margin: 0}} >
+          <div className="user-container login-container">
+          <img src='user.svg' alt='user' title="User Icon" style={{width: '50px'}} />
+            <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Your username " />
           </div>
           <div className="user-container">
-            <label>Password:</label>
-            <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <img src='lock.svg' alt='password' title="password Icon" style={{width: '50px'}} />
+            <input type="password" name="password" value={password} onChange={this.handleChange}  placeholder="****"/>
           </div>
-          <div >
+          <div className="button-login-singup" >
           <input type='image' value='submit' src='login.svg' alt='submit Button' title="User Login" style={{width: '50px'}} onClick={this.handleFormSubmit}/>
           </div>
         </form>
         <p>
-          If you don't have an account yet,
-          <Link to={'/signup'}>Signup</Link>
+         <span> If you don't have an account yet,
+          <Link className="womargin" to={'/signup'}>Signup</Link></span>
         </p>
       </div>
     );

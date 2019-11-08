@@ -1,6 +1,6 @@
 .logo-container {
     width: 100%;
-        margin: 0 auto;
+    margin-bottom:50px auto;
 }
 
 .logo-container img{
@@ -11,5 +11,5 @@
 .logo-container h1{
     font-size: 50px;
     text-align: center;
-    margin: 0;
+    margin: 25px auto;
 }
