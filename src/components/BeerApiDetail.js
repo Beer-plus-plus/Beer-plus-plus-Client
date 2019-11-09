@@ -35,11 +35,14 @@ class BeerApiDetail extends Component {
             <div></div>
             <h2>Beer style: {beer.style.name}</h2>
             <div></div>
+            <button>Add to preferred</button>
+            <button>Stop being preferred</button>
           </div>
         ) : (
           <div>
             <img src="loading2.gif" alt="beer loading"></img>
           </div>
+          
         )}
       </div>
     );

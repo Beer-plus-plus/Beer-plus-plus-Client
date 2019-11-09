@@ -99,7 +99,7 @@ class BeersView extends Component {
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading"></img>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '50%' }}></img>
           </div>
         )}
 
