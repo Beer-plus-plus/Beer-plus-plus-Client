@@ -39,13 +39,13 @@ class UserForm extends Component {
     const { user, loading } = this.state;
     return (<div>
       {!loading ? (
-      <form onSubmit={this.handleFormSubmit}>
-        <div>
+      <form className="form-user-container" onSubmit={this.handleFormSubmit}>
+        <div className="input-container">
           <label htmlFor="name">name</label>
           <input type="text" name="name" placeholder="your name" value={user.name} onChange={this.handleChange} />
         </div>
 
-        <div>
+        <div className="input-container">
           <label htmlFor="lastName">Last name</label>
           <input
             type="text"
@@ -56,7 +56,7 @@ class UserForm extends Component {
           />
         </div>
 
-        <div>
+        <div className="input-container">
           <label htmlFor="email">email</label>
           <input
             type="email"
@@ -66,9 +66,9 @@ class UserForm extends Component {
             value={user.email}
             onChange={this.handleChange}
           />
-        </div>
-        <div>
-          <input type="submit" value="Update"></input>
+        </div >
+        <div  className="update">
+          <input className="button" type="submit" value="Update"></input>
         </div>
       </form>) : (
           <div>

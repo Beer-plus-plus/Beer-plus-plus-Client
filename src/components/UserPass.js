@@ -26,20 +26,22 @@ class UserPass extends Component {
   render() {
     const { newPass, confirmPass } = this.state;
     return (
-      <form onSubmit={this.handleForm}>
-        <div>
+      <form className="form-password-container" onSubmit={this.handleForm}>
+        <div className="input-container">
           <label htmlFor="oldPass">Password</label>
           <input type="password" name="oldPass" placeholder="****" onChange={this.handleChange} />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="newPass">New password</label>
           <input type="password" name="newPass" value={newPass} onChange={this.handleChange} />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="confirmPass">Confirm password</label>
           <input type="password" name="confirmPass" value={confirmPass} onChange={this.handleChange} />
         </div>
-        <input type="submit" value="Change password"></input>
+        <div className="organize-password">
+        <input className="button" type="submit" value="Change password" ></input>
+     </div>
       </form>
     );
   }
