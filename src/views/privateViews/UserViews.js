@@ -11,14 +11,16 @@ class UserView extends Component {
     const { user } = this.props;
     return (
       <div className="container-userview">
-        <h1>USER PROFILE</h1>
-        <p>Username: {user.username}</p>
-        <UserForm user={user} />
+        <h1>{user.username}'PROFILE</h1>
         <AddImage user={user} />
+        <UserForm user={user} />
+        
         <UserPass user={user} />
-        <button>Preferred Sites</button>
-        <button>Preferred Beers</button>
-        <button onClick={this.props.handleLogout}>logout</button>
+        <div className="organize-button">
+        <button className="button">Preferred Sites</button>
+        <button className="button" >Preferred Beers</button>
+        <button  className="button" onClick={this.props.handleLogout}>logout</button>
+        </div>
         <div>
         <Link to="/beers"><img src="beer.svg" alt="Beer menu" style={{width: '50px'}}></img></Link>
         </div>
