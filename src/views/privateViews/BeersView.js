@@ -59,26 +59,13 @@ class BeersView extends Component {
       });
   };
 
-  // componentDidMount = () => {
-  //   this.setState({ loading: true });
-  //   const newIndex = this.state.index;
-  //   beersService
-  //     .getAllBeers(newIndex)
-  //     .then(({ beers, numberOfPages }) => {
-  //       this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
-
   componentDidMount = () => {
     this.setState({ loading: true });
-   beersService
-      .getAllBeers()
-      .then((beers) => {
-        console.log('estas son todas las cervezas', beers)
-        this.setState({ beersNow: [...beers] }, ()=>{this.setState({loading:false})});
+    const newIndex = this.state.index;
+    beersService
+      .getAllBeers(newIndex)
+      .then(({ beers, numberOfPages }) => {
+        this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
       })
       .catch(error => {
         console.log(error);
@@ -112,7 +99,7 @@ class BeersView extends Component {
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading"></img>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '50%' }}></img>
           </div>
         )}
 
