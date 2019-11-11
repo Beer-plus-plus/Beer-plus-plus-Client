@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '../Context/AuthContext';
 import beerService from '../services/beersService';
+import Navbar from './Navbar';
 
 class BeerApiDetail extends Component {
   state = {
@@ -15,8 +14,8 @@ class BeerApiDetail extends Component {
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
-      this.setState({ beer: { ...beer }, loading: false }, () => {
-        console.log(this.state.beer);
+      this.setState({ beer: { ...beer } }, () => {
+        this.setState({loading: false});
       });
     } catch (error) {
       console.log(error);
@@ -38,24 +37,17 @@ class BeerApiDetail extends Component {
             <div></div>
             <button>Add to preferred</button>
             <button>Stop being preferred</button>
+            <Navbar/>
           </div>
         ) : (
           <div>
-            <img src="loading.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
         )}
-        <div className="footer-menu">
-          <Link to="/user">
-            <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
-          </Link>
-
-          <button onClick={this.props.handleLogout} style={{ border: 'none', background: 'transparent' }}>
-            <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
-          </button>
-        </div>
+       
       </div>
     );
   }
 }
 
-export default withAuth(BeerApiDetail);
+export default BeerApiDetail;

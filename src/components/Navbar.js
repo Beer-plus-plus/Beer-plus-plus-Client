@@ -11,23 +11,21 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div>
-        <div className="footer-menu">
-          <div>
-            <Link to="/beers" style={{ display: 'inline-block' }}>
-              <img src="beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
-            </Link>
-          </div>
-          <div>
-            <button onClick={this.props.handleLogout}>
-              <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
-            </button>
-          </div>
-          <div>
-            <Link to="/user">
-              <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
-            </Link>
-          </div>
+      <div className="footer-menu">
+        <div>
+          <Link to="/beers" style={{ display: 'inline-block' }}>
+            <img src="beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
+          </Link>
+        </div>
+        <div>
+          <button onClick={this.props.handleLogout} style={{ background: 'transparent', border: 'none' }}>
+            <img src="logout.svg" alt="Beer menu" style={{ width: '50px', background: 'transparent' }}></img>
+          </button>
+        </div>
+        <div>
+          <Link to="/user">
+            <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
+          </Link>
         </div>
       </div>
     );
