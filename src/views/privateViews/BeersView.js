@@ -4,6 +4,7 @@ import './beersView.css';
 import beersService from '../../services/beersService';
 import BeerCard from '../../components/BeerCard';
 import { withAuth } from '../../Context/AuthContext';
+import Navbar from '../../components/Navbar';
 
 class BeersView extends Component {
   state = {
@@ -103,15 +104,7 @@ class BeersView extends Component {
           </div>
         )}
 
-        <div className="footer-menu">
-          <Link to="/user">
-            <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
-          </Link>
-
-          <button onClick={this.props.handleLogout} style={{ border: 'none', background: 'transparent' }}>
-            <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
-          </button>
-        </div>
+        <Navbar />
       </div>
     );
   }

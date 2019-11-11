@@ -4,7 +4,7 @@ import { withAuth } from '../Context/AuthContext';
 
 class AddImage extends Component {
   state = {
-    imageUrl: this.props.user.img.imageUrl,
+    imageUrl: 'user.svg',
   };
 
   handleChange = e => {
@@ -14,7 +14,8 @@ class AddImage extends Component {
 
   handleFileChange = e => {
     e.preventDefault();
-    this.setState({ imageUrl: e.target.files[0] });
+    console.log(e.target.files[0]);
+    // this.setState({ imageUrl: e.target.files[0] });
   };
 
   handleSubmitFileUpload = e => {
@@ -24,6 +25,7 @@ class AddImage extends Component {
     userService
       .handleUpload(this.props.user._id, uploadData)
       .then(response => {
+        console.log(response);
         this.setState({ imageUrl: response.secure_url });
         this.props.user.img.imageUrl = this.state.imageUrl;
       })
@@ -33,18 +35,14 @@ class AddImage extends Component {
 
   render() {
     // const { user } = this.props;
-    // const { imageUrl } = this.state;
+    const { imageUrl } = this.state;
     return (
       <div>
-        <img src={this.props.user.img.imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
+        <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
         <form onSubmit={this.handleSubmitFileUpload} encType="multipart/form-data">
-          <div className="input-container">
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
-            </div>
-            <input type="file" onChange={this.handleFileChange}></input>
-            <button type="submit">Save Image</button>
-        
+          <div className="input-container"></div>
+          <input type="file" onChange={this.handleFileChange}></input>
+          <button type="submit">Save Image</button>
         </form>
       </div>
     );
