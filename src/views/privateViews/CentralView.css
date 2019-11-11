@@ -1,0 +1,28 @@
+.Left-up-menu{
+    border:4px solid black;
+    border-top-left-radius: 100%;
+    padding:30px;
+     display:inline-block;
+}
+
+.right-up-menu{
+    border:4px solid black;
+    border-top-right-radius: 100%;
+    padding:30px;
+      display:inline-block;
+}
+
+.left-down-menu{
+    border:4px solid black;
+    border-bottom-left-radius: 100%;
+    padding:30px;
+      display:inline-block;
+}
+
+.right-down-menu{
+    border:4px solid black;
+    border-bottom-right-radius: 100%;
+    padding:30px;
+      display:inline-block;
+}
+
