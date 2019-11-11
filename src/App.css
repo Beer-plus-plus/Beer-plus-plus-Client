@@ -9,4 +9,5 @@
     background: linear-gradient(to bottom, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9e30', endColorstr='#ff9e30', GradientType=0);
     box-sizing: border-box;
+    padding-bottom:100px;
 }

@@ -73,12 +73,13 @@ class Signup extends Component {
             />
           </div>
         </form>
-        <p>
-          <span>
-            Already have account?
-            <Link to={'/'}>Login</Link>
-          </span>
-        </p>
+        <div className="change-login-signup">
+          Already have account?
+          <Link to={'/'}>Login</Link>
+        </div>
+        <div className="space">
+
+        </div>
       </div>
     );
   }

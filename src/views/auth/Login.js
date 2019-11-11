@@ -29,23 +29,41 @@ class Login extends Component {
     return (
       <div className="login-container margin-login">
         <Logo />
-        <form className="form-container" style={{margin: 0}} >
+        <form className="form-container" style={{ margin: 0 }}>
           <div className="user-container login-container">
-          <img src='user.svg' alt='user' title="User Icon" style={{width: '50px'}} />
-            <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Your username " />
+            <img src="user.svg" alt="user" title="User Icon" style={{ width: '50px' }} />
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={this.handleChange}
+              placeholder="Your username "
+            />
           </div>
           <div className="user-container">
-          <img src='lock.svg' alt='password' title="password Icon" style={{width: '50px'}} />
-            <input type="password" name="password" value={password} onChange={this.handleChange}  placeholder="****"/>
+            <img src="lock.svg" alt="password" title="password Icon" style={{ width: '50px' }} />
+            <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="****" />
           </div>
-          <div className="button-login-singup" >
-          <input type='image' value='submit' src='login.svg' alt='submit Button' title="User Login" style={{width: '50px'}} onClick={this.handleFormSubmit}/>
+          <div className="button-login-singup">
+            <input
+              type="image"
+              value="submit"
+              src="login.svg"
+              alt="submit Button"
+              title="User Login"
+              style={{ width: '50px' }}
+              onClick={this.handleFormSubmit}
+            />
           </div>
         </form>
-        <p>
-         <span> If you don't have an account yet,
-          <Link className="womargin" to={'/signup'}>Signup</Link></span>
-        </p>
+        <div className="change-login-signup">
+          <span>
+            If you don't have an account yet,
+            <Link className="womargin" to={'/signup'}>
+              Signup
+            </Link>
+          </span>
+        </div>
       </div>
     );
   }
