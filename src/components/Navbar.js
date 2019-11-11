@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
+import '../views/privateViews/UserViews.css';
 
 class Navbar extends Component {
   constructor(props) {
@@ -12,16 +13,22 @@ class Navbar extends Component {
     return (
       <div>
         <div className="footer-menu">
-          <Link to="/beers">
-            <img src="beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
-          </Link>
+          <div>
+            <Link to="/beers" style={{ display: 'inline-block' }}>
+              <img src="beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
+            </Link>
+          </div>
+          <div>
+            <button onClick={this.props.handleLogout}>
+              <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
+            </button>
+          </div>
+          <div>
+            <Link to="/user">
+              <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
+            </Link>
+          </div>
         </div>
-        <button onClick={this.props.handleLogout} style={{ border: 'none', background: 'transparent' }}>
-          <img src={`${process.env.PUBLIC_URL}/logout.svg`} alt="Beer menu" style={{ width: '50px' }}></img>
-        </button>
-        <Link to="/user">
-            <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
-          </Link>
       </div>
     );
   }

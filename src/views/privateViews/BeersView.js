@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './beersView.css';
 import beersService from '../../services/beersService';
 import BeerCard from '../../components/BeerCard';
@@ -97,6 +96,7 @@ class BeersView extends Component {
                 );
               })}
             </div>
+            <Navbar />
           </div>
         ) : (
           <div>
@@ -104,7 +104,7 @@ class BeersView extends Component {
           </div>
         )}
 
-        <Navbar />
+       
       </div>
     );
   }

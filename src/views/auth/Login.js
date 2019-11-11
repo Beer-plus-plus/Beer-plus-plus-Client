@@ -56,7 +56,7 @@ class Login extends Component {
             />
           </div>
         </form>
-        <div className="change-login-signup">
+        <div className="change-login-signup{">
           <span>
             If you don't have an account yet,
             <Link className="womargin" to={'/signup'}>
