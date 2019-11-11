@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { withAuth } from '../Context/AuthContext';
 import beerService from '../services/beersService';
 
@@ -40,10 +41,18 @@ class BeerApiDetail extends Component {
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading"></img>
+            <img src="loading.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
-          
         )}
+        <div className="footer-menu">
+          <Link to="/user">
+            <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
+          </Link>
+
+          <button onClick={this.props.handleLogout} style={{ border: 'none', background: 'transparent' }}>
+            <img src="logout.svg" alt="Beer menu" style={{ width: '50px' }}></img>
+          </button>
+        </div>
       </div>
     );
   }

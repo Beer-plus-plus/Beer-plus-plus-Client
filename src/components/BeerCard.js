@@ -18,8 +18,6 @@ export default class Allbeers extends Component {
           ) : (
             <img src="na.svg" alt={aBeer.nameDisplay} style={{ width: '64px' }} />
           )}
-          <p>{aBeer.description}</p>
-          <hr></hr>
         </Link>
       </div>
     );

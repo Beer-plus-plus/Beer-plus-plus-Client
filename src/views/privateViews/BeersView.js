@@ -99,11 +99,11 @@ class BeersView extends Component {
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading" style={{ width: '50%' }}></img>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
         )}
 
-        <div>
+        <div className="footer-menu">
           <Link to="/user">
             <img src="user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
           </Link>
