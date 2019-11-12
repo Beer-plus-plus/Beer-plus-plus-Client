@@ -11,19 +11,25 @@ import Navbar from '../../components/Navbar';
 class UserView extends Component {
 
   state = {
-    user : {}
+    user : {},
+    loading:true,
   }
 
   componentDidMount= async () => {
+    this.setState({loading:true})
+    console.log(this.props.user._id);
     const user = await UserService.userGetDetail(this.props.user._id);
-   this.setState ({user});
+    console.log('esto es user', user);
+    this.setState ({user},()=>{this.setState({loading: false})});
 
   }
 
   render() {
-    const { user } = this.state;
+    const { user, loading } = this.state;
+   if  (user) console.log(user)
     return (
       <div className="container-userview">
+        {!loading && <div>
         <h1 >{user.username}'PROFILE</h1>
         <AddImage user={user} />
         <UserForm user={user} />
@@ -37,6 +43,11 @@ class UserView extends Component {
           </button>
           <Navbar  user={this.props.user} />
         </div>
+        </div>}
+        {loading && <div>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+          </div>}
+
       </div>
     );
   }

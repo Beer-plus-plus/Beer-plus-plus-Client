@@ -4,7 +4,8 @@ import { withAuth } from '../Context/AuthContext';
 
 class AddImage extends Component {
   state = {
-    imageUrl: this.props.user.imageUrl,
+    imageUrl:'',
+    loading:true,
   };
 
   handleChange = e => {
@@ -44,10 +45,17 @@ class AddImage extends Component {
       .catch(err => {});
   };
 
+componentDidMount = () => {
+  this.setState({loading:true, imageUrl: this.props.user.img.imageUrl});
+  this.setState({loading:false});
+}
+
   render() {
-    
-    const { imageUrl } = this.state;
-    return (
+
+    const {imageUrl, loading} = this.state;
+    console.log(imageUrl)
+    return (<div>
+      {!loading && 
       <div style={{ marginTop: '50px' }}>
         <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
         <form onSubmit={this.handleSubmitFileUpload} encType="multipart/form-data">
@@ -61,6 +69,10 @@ class AddImage extends Component {
           ></input>
           <button type="submit">Save Image</button>
         </form>
+      </div>}
+      {loading && loading && <div>
+            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+          </div>}}
       </div>
     );
   }

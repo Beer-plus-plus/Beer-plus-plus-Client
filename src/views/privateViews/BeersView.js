@@ -65,6 +65,7 @@ class BeersView extends Component {
     beersService
       .getAllBeers(newIndex)
       .then(({ beers, numberOfPages }) => {
+        
         this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
       })
       .catch(error => {

@@ -8,6 +8,10 @@ class BeerApiDetail extends Component {
     loading: true,
   };
 
+  handleOnClick= async () => {
+    console.log('entro Aqui');
+  }
+
   componentDidMount = async () => {
     this.setState({ loading: true });
     const { id } = this.props.match.params;
@@ -35,7 +39,7 @@ class BeerApiDetail extends Component {
             <div></div>
             <h2>Beer style: {beer.style.name}</h2>
             <div></div>
-            <button>Add to preferred</button>
+            <button onclick={this.handleOnClick}>Add to preferred</button>
             <button>Stop being preferred</button>
             <Navbar/>
           </div>

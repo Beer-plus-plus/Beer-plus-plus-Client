@@ -4,7 +4,7 @@ import userService from '../services/userService';
 class UserForm extends Component {
   state = {
     user: {},
-    loading: true,
+    loading: false,
   };
 
   handleChange = e => {
@@ -24,15 +24,7 @@ class UserForm extends Component {
 
   async componentDidMount() {
     this.setState({loading:true})
-    const {
-      user: { _id },
-    } = this.props;
-   try {
-      const newUser = await userService.userGetDetail(_id);
-      this.setState({ user: { ...newUser }, loading: false });
-    } catch (error) {
-      this.setState({ loading: false });
-    }
+     this.setState({ user: this.props.user}, ()=>{this.setState({loading:false})});
   }
 
   render() {
@@ -42,7 +34,7 @@ class UserForm extends Component {
       <form className="form-user-container" onSubmit={this.handleFormSubmit}>
         <div className="input-container">
           <label htmlFor="name">name</label>
-          <input type="text" name="name" placeholder="your name" value={user.name} onChange={this.handleChange} />
+          <input type="text" name="name" placeholder="your name" value={(user.name === null) ?  "" : user.name} onChange={this.handleChange} />
         </div>
 
         <div className="input-container">
@@ -51,7 +43,7 @@ class UserForm extends Component {
             type="text"
             name="lastName"
             placeholder="your Last name"
-            value={user.lastName}
+            value={(user.lastName === null) ?  "" : user.lastName}
             onChange={this.handleChange}
           />
         </div>
