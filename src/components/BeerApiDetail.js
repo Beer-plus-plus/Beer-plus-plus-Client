@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import beerService from '../services/beersService';
 import Navbar from './Navbar';
+import './BeerApiDetail.css';
 
 class BeerApiDetail extends Component {
   state = {
     beer: {},
     loading: true,
+     ingredients:{},
   };
 
   handleOnClick= async () => {
@@ -18,9 +20,12 @@ class BeerApiDetail extends Component {
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
+      console.log('beer info',beer)
       this.setState({ beer: { ...beer } }, () => {
         this.setState({loading: false});
       });
+      const dataIngredients= await beerService.gerBeerDetailIngredients(id);
+      console.log(dataIngredients);
     } catch (error) {
       console.log(error);
     }
@@ -31,14 +36,17 @@ class BeerApiDetail extends Component {
     return (
       <div>
         {!loading ? (
-          <div>
+          <div className="beerdetail-container">
             <h1>Beer Detail</h1>
             <h2>Name:{beer.nameDisplay}</h2>
             <div></div>
-            <h2>Description: {beer.style.description}</h2>
+            <p>Description: {beer.style.description}</p>
             <div></div>
-            <h2>Beer style: {beer.style.name}</h2>
-            <div></div>
+            <p>Beer style: {beer.style.name}</p>
+            <p></p>
+            <div>
+
+            </div>
             <button onclick={this.handleOnClick}>Add to preferred</button>
             <button>Stop being preferred</button>
             <Navbar/>

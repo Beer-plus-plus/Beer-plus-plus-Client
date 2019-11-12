@@ -29,11 +29,20 @@ class BeerService {
   // }
 
   async getBeerDetail(id) {
-    console.log('la id es', id);
-    try {
+        try {
       const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
       console.log(aBeer);
       return aBeer;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async gerBeerDetailIngredients(id){
+    try {
+      const ingredients = await this.beers.get(`/api/beer/beeringredients/${id}`);
+      console.log(ingredients);
+      return ingredients;
     } catch (error) {
       console.log(error);
     }
