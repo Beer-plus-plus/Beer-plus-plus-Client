@@ -1,13 +1,39 @@
-.container-beersView{
+.container-beersView {
     font-family: 'Baloo Tamma', cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.beer-card{
-    border:1px solid black;
-    border-radius:10px;
-    margin:10px 50px;
-    box-shadow: 3px 3px 5px black;
+.titled {
+    margin-top: 90px;
 }
+
+.beer-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 50px;
+    box-shadow: 3px 3px 5px black;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.buttonPage {
+    position: fixed;
+    border: none;
+    background: transparent;
+}
+
+.left {
+    left: 5px;
+    top: 300px;
+}
+.right {
+
+    position: fixed;
+    right: 5px;
+    top: 300px;
+
+}
+
 

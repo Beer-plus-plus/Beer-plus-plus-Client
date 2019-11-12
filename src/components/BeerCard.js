@@ -14,9 +14,13 @@ export default class Allbeers extends Component {
           <h1>{aBeer.name}</h1>
           {aBeer.abv ? <h2>{`${aBeer.abv}º`}</h2> : <> </>}
           {aBeer.labels ? (
-            <img src={aBeer.labels.icon} alt={aBeer.nameDisplay} />
+            <div className="brand">
+              <img src={aBeer.labels.icon} alt={aBeer.nameDisplay} />
+            </div>
           ) : (
-            <img src="na.svg" alt={aBeer.nameDisplay} style={{ width: '64px' }} />
+            <div className="brand">
+              <img src="na.svg" alt={aBeer.nameDisplay} />
+            </div>
           )}
         </Link>
       </div>

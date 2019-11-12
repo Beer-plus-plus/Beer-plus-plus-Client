@@ -4,7 +4,7 @@ import { withAuth } from '../Context/AuthContext';
 
 class AddImage extends Component {
   state = {
-    imageUrl: 'user.svg',
+    imageUrl: this.props.user.imageUrl,
   };
 
   handleChange = e => {
@@ -14,8 +14,19 @@ class AddImage extends Component {
 
   handleFileChange = e => {
     e.preventDefault();
-    console.log(e.target.files[0]);
-    // this.setState({ imageUrl: e.target.files[0] });
+
+    this.setState({ imageUrl: e.target.files[0] });
+  };
+
+  previewImage = event => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const output = document.getElementById('output_image');
+      output.src = reader.result;
+      console.log('entro aqui')
+    };
+    console.log(reader.readAsDataURL(event.target.files[0]));
+    this.setState({ imageUrl: reader.readAsDataURL(event.target.files[0]) });
   };
 
   handleSubmitFileUpload = e => {
@@ -25,23 +36,29 @@ class AddImage extends Component {
     userService
       .handleUpload(this.props.user._id, uploadData)
       .then(response => {
-        console.log(response);
+        console.log(response)
         this.setState({ imageUrl: response.secure_url });
         this.props.user.img.imageUrl = this.state.imageUrl;
-      })
+           })
 
       .catch(err => {});
   };
 
   render() {
-    // const { user } = this.props;
+    
     const { imageUrl } = this.state;
     return (
-      <div>
+      <div style={{ marginTop: '50px' }}>
         <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
         <form onSubmit={this.handleSubmitFileUpload} encType="multipart/form-data">
           <div className="input-container"></div>
-          <input type="file" onChange={this.handleFileChange}></input>
+          <input
+            id="output_image"
+            type="file"
+            onLoad={this.previewImage}
+            onChange={this.handleFileChange}
+            accept="image/png, image/jpeg"
+          ></input>
           <button type="submit">Save Image</button>
         </form>
       </div>

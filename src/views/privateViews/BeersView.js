@@ -77,12 +77,16 @@ class BeersView extends Component {
 
     return (
       <div className="container-beersView">
-        <h1>Beerpedia</h1>
-
+        <h1 className="titled">Beerpedia</h1>
+        <button className="buttonPage left" onClick={this.downPage}>
+          <img src="left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
+        </button>
+        <button className="buttonPage right" onClick={this.upPage}>
+          {' '}
+          <img src="arrow-pointing-to-right.svg" alt="arrow right sign"style={{ width: '35px' }}></img>
+        </button>
         {!loading ? (
           <div>
-            <button onClick={this.downPage}> Page before</button>
-            <button onClick={this.upPage}>Next Page</button>
             <div>
               <label htmlFor="textFilter">Search...</label>
               <input type="text" name="textFilter" placeholder="Search your beer..." onChange={this.handleChange} />
@@ -103,8 +107,6 @@ class BeersView extends Component {
             <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
         )}
-
-       
       </div>
     );
   }
