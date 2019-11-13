@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import userService from '../services/userService';
 import { withAuth } from '../Context/AuthContext';
+import { NONAME } from 'dns';
 
 class AddImage extends Component {
   state = {
-    imageUrl:'',
-    loading:true,
+    imageUrl: '',
+    loading: true,
   };
 
   handleChange = e => {
@@ -24,7 +25,7 @@ class AddImage extends Component {
     reader.onload = () => {
       const output = document.getElementById('output_image');
       output.src = reader.result;
-      console.log('entro aqui')
+      console.log('entro aqui');
     };
     console.log(reader.readAsDataURL(event.target.files[0]));
     this.setState({ imageUrl: reader.readAsDataURL(event.target.files[0]) });
@@ -37,43 +38,101 @@ class AddImage extends Component {
     userService
       .handleUpload(this.props.user._id, uploadData)
       .then(response => {
-        console.log(response)
+        console.log(response);
         this.setState({ imageUrl: response.secure_url });
         this.props.user.img.imageUrl = this.state.imageUrl;
-           })
+      })
 
       .catch(err => {});
   };
 
-componentDidMount = () => {
-  console.log(this.props.user.img.imageUrl);
-  this.setState({loading:true, imageUrl: this.props.user.img.imageUrl});
-  this.setState({loading:false});
-}
+  componentDidMount = () => {
+    console.log(this.props.user.img.imageUrl);
+    this.setState({ loading: true, imageUrl: this.props.user.img.imageUrl });
+    this.setState({ loading: false });
+  };
 
   render() {
-
-    const {imageUrl, loading} = this.state;
-    console.log(imageUrl)
-    return (<div>
-      {!loading && 
-      <div style={{ marginTop: '50px' }}>
-        <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
-        <form onSubmit={this.handleSubmitFileUpload} encType="multipart/form-data">
-          <div className="input-container"></div>
-          <input
-            id="output_image"
-            type="file"
-            onLoad={this.previewImage}
-            onChange={this.handleFileChange}
-            accept="image/png, image/jpeg"
-          ></input>
-          <button type="submit">Save Image</button>
-        </form>
-      </div>}
-      {loading && loading && <div>
+    const { imageUrl, loading } = this.state;
+    console.log(imageUrl);
+    return (
+      <div>
+        {!loading && (
+          <div style={{ marginTop: '50px' }}>
+            <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
+            <form
+              className="form-password-container"
+              onSubmit={this.handleSubmitFileUpload}
+              encType="multipart/form-data"
+            >
+              <div className="input-container">
+                <input
+                  id="output_image"
+                  type="file"
+                  onLoad={this.previewImage}
+                  onChange={this.handleFileChange}
+                  accept="image/png, image/jpeg"
+                  style={{
+                    border: 'none',
+                    background: 'transparent',
+                    opacity: '0',
+                    overflow: 'hidden',
+                    position: 'absolute',
+                    fontSize: '1.25em',
+                    color: 'white',
+                    backgroundColor: 'black',
+                    display: 'inline-block',
+                                  }}
+                ></input>
+                <label
+                  htmlFor="file"
+                  style={{
+                    background: "#ffffff",
+                    border: '4px solid black',
+                    borderRadius: '10px',
+                    padding: '4px',
+                    fontSize: '1.25em',
+                    color: 'black',
+                     display: 'inline-block',
+                    
+                  }}
+                >
+                  Choose a file
+                </label>
+              </div>
+              <button  style={{
+                    background: 'transparent',
+                    opacity: '0',
+                    overflow: 'hidden',
+                    position: 'absolute',
+                    fontSize: '1.25em',
+                    color: 'white',
+                    backgroundColor: 'black',
+                    display: 'inline-block',
+                                  }} type="submit">Save Image</button>
+                         <label
+                  htmlFor="file"
+                  style={{
+                    background: "#ffffff",
+                    border: '4px solid black',
+                    borderRadius: '10px',
+                    padding: '4px',
+                    fontSize: '1.25em',
+                    color: 'black',
+                     display: 'inline-block',
+                    marginLeft: "10px"
+                  }}
+                >
+                Save
+              </label>        
+            </form>
+          </div>
+        )}
+        {loading && loading && (
+          <div>
             <img src="/images//loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
-          </div>}
+          </div>
+        )}
       </div>
     );
   }
