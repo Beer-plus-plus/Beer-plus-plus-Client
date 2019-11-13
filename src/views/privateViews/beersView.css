@@ -18,6 +18,11 @@
     align-items: center;
 }
 
+.beer-card a, beer-card a:visited{
+    color:black;
+    text-decoration-line: none;
+}
+
 .buttonPage {
     position: fixed;
     border: none;

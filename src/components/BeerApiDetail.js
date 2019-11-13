@@ -7,12 +7,12 @@ class BeerApiDetail extends Component {
   state = {
     beer: {},
     loading: true,
-     ingredients:{},
+    ingredients: {},
   };
 
-  handleOnClick= async () => {
+  handleOnClick = async () => {
     console.log('entro Aqui');
-  }
+  };
 
   componentDidMount = async () => {
     this.setState({ loading: true });
@@ -20,43 +20,53 @@ class BeerApiDetail extends Component {
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
-      console.log('beer info',beer)
+      console.log('beer info', beer);
       this.setState({ beer: { ...beer } }, () => {
-        this.setState({loading: false});
+        this.setState({ loading: false });
       });
-      const dataIngredients= await beerService.gerBeerDetailIngredients(id);
-      console.log(dataIngredients);
+      const dataIngredients = await beerService.gerBeerDetailIngredients(id);
+      this.setState({ ingredients: dataIngredients }, () => {
+        this.setState({ loading: false });
+      });
     } catch (error) {
       console.log(error);
     }
   };
 
   render() {
-    const { beer, loading } = this.state;
+    const { beer, loading, ingredients } = this.state;
     return (
       <div>
         {!loading ? (
           <div className="beerdetail-container">
-            <h1>Beer Detail</h1>
-            <h2>Name:{beer.nameDisplay}</h2>
+            {/* <h1>Beer Detail</h1> */}
+            <h1>{beer.nameDisplay}</h1>
             <div></div>
             <p>Description: {beer.style.description}</p>
             <div></div>
+            <p title="Alcohol by volume">ABV: {`${beer.abv}%`}</p>
+            <p title="International Bitterness Units ">IBU: {`${beer.ibu}`}</p>
             <p>Beer style: {beer.style.name}</p>
-            <p></p>
             <div>
-
+              ingredients:{' '}
+              {ingredients.length>0 ? ingredients.map((ingredient, index) => {
+                return (
+                <span key={`ingredient-${index}`}>{`${ingredient.name}`}
+                , {' '} 
+                </span>
+                )
+              }): <></>}
             </div>
-            <button onclick={this.handleOnClick}>Add to preferred</button>
+            <div></div>
+            <button onClick={this.handleOnClick}>Add to preferred</button>
             <button>Stop being preferred</button>
-            <Navbar/>
+            <Navbar />
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
         )}
-       
       </div>
     );
   }

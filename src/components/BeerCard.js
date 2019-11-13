@@ -19,7 +19,7 @@ export default class Allbeers extends Component {
             </div>
           ) : (
             <div className="brand">
-              <img src="na.svg" alt={aBeer.nameDisplay} />
+              <img src="/images/na.svg" alt={aBeer.nameDisplay} />
             </div>
           )}
         </Link>

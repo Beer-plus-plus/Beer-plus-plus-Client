@@ -64,7 +64,7 @@ class UserForm extends Component {
         </div>
       </form>) : (
           <div>
-            <img src="loading2.gif" alt="beer loading"></img>
+            <img src="/images/loading2.gif" alt="beer loading"></img>
           </div>
         )}
 

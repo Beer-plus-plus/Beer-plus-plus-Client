@@ -45,7 +45,7 @@ class UserView extends Component {
         </div>
         </div>}
         {loading && <div>
-            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>}
 
       </div>

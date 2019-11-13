@@ -29,7 +29,7 @@ class Signup extends Component {
         <Logo />
         <form className="form-container">
           <div className="user-container margin-signup">
-            <img src="user.svg" alt="user" title="User Icon" style={{ width: '50px' }} />
+            <img src="/images/user.svg" alt="user" title="User Icon" style={{ width: '50px' }} />
             <input
               type="text"
               name="username"
@@ -40,7 +40,7 @@ class Signup extends Component {
             />
           </div>
           <div className="user-container margin-signup">
-            <img src="email.svg" alt="email" title="email Icon" style={{ width: '50px' }} />
+            <img src="/images/email.svg" alt="email" title="email Icon" style={{ width: '50px' }} />
             <input
               type="email"
               name="email"
@@ -51,7 +51,7 @@ class Signup extends Component {
             />
           </div>
           <div className="user-container margin-signup">
-            <img src="lock.svg" alt="password" title="password Icon" style={{ width: '50px' }} />
+            <img src="/images/lock.svg" alt="password" title="password Icon" style={{ width: '50px' }} />
             <input
               type="password"
               name="password"
@@ -65,7 +65,7 @@ class Signup extends Component {
             <input
               type="image"
               value="submit"
-              src="signup.svg"
+              src="/images/signup.svg"
               alt="submit Button"
               title="User Login"
               style={{ width: '50px' }}

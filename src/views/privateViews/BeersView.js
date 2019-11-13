@@ -80,11 +80,11 @@ class BeersView extends Component {
       <div className="container-beersView">
         <h1 className="titled">Beerpedia</h1>
         <button className="buttonPage left" onClick={this.downPage}>
-          <img src="left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
+          <img src="/images/left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
         </button>
         <button className="buttonPage right" onClick={this.upPage}>
           {' '}
-          <img src="arrow-pointing-to-right.svg" alt="arrow right sign"style={{ width: '35px' }}></img>
+          <img src="/images/arrow-pointing-to-right.svg" alt="arrow right sign"style={{ width: '35px' }}></img>
         </button>
         {!loading ? (
           <div>
@@ -105,7 +105,7 @@ class BeersView extends Component {
           </div>
         ) : (
           <div>
-            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
         )}
       </div>

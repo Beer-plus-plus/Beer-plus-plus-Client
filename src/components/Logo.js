@@ -4,7 +4,7 @@ import './logo.css';
 const Logo = () => {
   return (
     <div className="logo-container" >
-      <img src="Beer++logo.svg" alt="loading" ></img>
+      <img src="/images/Beer++logo.svg" alt="loading" ></img>
       <h1>Beer ++</h1>
     </div>
   );

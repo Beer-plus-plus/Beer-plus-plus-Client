@@ -46,6 +46,7 @@ class AddImage extends Component {
   };
 
 componentDidMount = () => {
+  console.log(this.props.user.img.imageUrl);
   this.setState({loading:true, imageUrl: this.props.user.img.imageUrl});
   this.setState({loading:false});
 }
@@ -71,8 +72,8 @@ componentDidMount = () => {
         </form>
       </div>}
       {loading && loading && <div>
-            <img src="loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
-          </div>}}
+            <img src="/images//loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+          </div>}
       </div>
     );
   }
