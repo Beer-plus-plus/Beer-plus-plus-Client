@@ -29,7 +29,7 @@ class BeerService {
   // }
 
   async getBeerDetail(id) {
-        try {
+    try {
       const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
       console.log(aBeer);
       return aBeer;
@@ -38,10 +38,10 @@ class BeerService {
     }
   }
 
-  async gerBeerDetailIngredients(id){
+  async gerBeerDetailIngredients(id) {
     try {
       const data = await this.beers.get(`/api/beer/beeringredients/${id}`);
-      const {data:ingredients} = data;
+      const { data: ingredients } = data;
      return ingredients;
     } catch (error) {
       console.log(error);

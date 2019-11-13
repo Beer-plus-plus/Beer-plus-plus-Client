@@ -28,6 +28,7 @@ class BeerApiDetail extends Component {
       this.setState({ ingredients: dataIngredients }, () => {
         this.setState({ loading: false });
       });
+      console.log('los ingredientes son ', this.state.ingredients)
     } catch (error) {
       console.log(error);
     }
@@ -39,8 +40,7 @@ class BeerApiDetail extends Component {
       <div>
         {!loading ? (
           <div className="beerdetail-container">
-            {/* <h1>Beer Detail</h1> */}
-            <h1>{beer.nameDisplay}</h1>
+                      <h1>{beer.nameDisplay}</h1>
             <div></div>
             <p>Description: {beer.style.description}</p>
             <div></div>
@@ -49,13 +49,13 @@ class BeerApiDetail extends Component {
             <p>Beer style: {beer.style.name}</p>
             <div>
               ingredients:{' '}
-              {ingredients.length>0 ? ingredients.map((ingredient, index) => {
+              {window.ingredients  &&  ingredients.map((ingredient, index) => {
                 return (
                 <span key={`ingredient-${index}`}>{`${ingredient.name}`}
                 , {' '} 
                 </span>
                 )
-              }): <></>}
+              })}
             </div>
             <div></div>
             <button onClick={this.handleOnClick}>Add to preferred</button>
