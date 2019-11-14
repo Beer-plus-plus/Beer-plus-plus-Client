@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import userService from '../services/userService';
 import { withAuth } from '../Context/AuthContext';
-import { NONAME } from 'dns';
+
 
 class AddImage extends Component {
   state = {

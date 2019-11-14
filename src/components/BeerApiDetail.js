@@ -41,7 +41,8 @@ class BeerApiDetail extends Component {
 
   render() {
     const { beer, loading, ingredients } = this.state;
-
+     const { _id } = this.props.user;
+     console.log(_id)
     return (
       <div>
         {!loading ? (
