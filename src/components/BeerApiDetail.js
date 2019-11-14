@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import beerService from '../services/beersService';
 import Navbar from './Navbar';
 import './BeerApiDetail.css';
+import { withAuth } from '../Context/AuthContext';
 
 class BeerApiDetail extends Component {
   state = {
     beer: {},
     loading: true,
     ingredients: {},
+    _id: this.props.user._id,
   };
 
   handleOnClick = async () => {
@@ -41,8 +43,8 @@ class BeerApiDetail extends Component {
 
   render() {
     const { beer, loading, ingredients } = this.state;
-     const { _id } = this.props.user;
-     console.log(_id)
+     
+     console.log(this.props.user._id);
     return (
       <div>
         {!loading ? (
@@ -97,4 +99,4 @@ class BeerApiDetail extends Component {
   }
 }
 
-export default BeerApiDetail;
+export default withAuth(BeerApiDetail);
