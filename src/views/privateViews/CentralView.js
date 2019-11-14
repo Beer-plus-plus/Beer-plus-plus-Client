@@ -24,12 +24,12 @@ class Central extends Component {
           </div>
           <div className="left-down-menu">
             <Link to="/user">
-              <img src="/images/user.svg" alt="User Profile" style={{ width: '50px' }}></img>
+              <img src="/images/rice.svg" alt="User Profile" style={{ width: '50px' }}></img>
             </Link>
           </div>
           <div className="right-down-menu">
-            <Link to="/user">
-              <img src="/images/user.svg" alt="User Profile" style={{ width: '50px' }}></img>
+            <Link to="/logout">
+              <img src="/images/logout.svg" alt="User Profile" style={{ width: '50px' }}></img>
             </Link>
           </div>
         </div>

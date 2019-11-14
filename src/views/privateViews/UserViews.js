@@ -26,8 +26,7 @@ class UserView extends Component {
 
   render() {
     const { user, loading } = this.state;
-   if  (user) console.log(user)
-    return (
+       return (
       <div className="container-userview">
         {!loading && <div>
         <h1 >{user.username}'PROFILE</h1>
