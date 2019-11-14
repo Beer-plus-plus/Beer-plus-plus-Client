@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import userService from '../services/userService';
 import { withAuth } from '../Context/AuthContext';
 
-
 class AddImage extends Component {
   state = {
     imageUrl: '',
@@ -58,7 +57,7 @@ class AddImage extends Component {
     return (
       <div>
         {!loading && (
-          <div style={{ marginTop: '50px' }}>
+          <div style={{ marginTop: '300px' }}>
             <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
             <form
               className="form-password-container"
@@ -79,52 +78,56 @@ class AddImage extends Component {
                     overflow: 'hidden',
                     position: 'absolute',
                     fontSize: '1.25em',
-                    color: 'white',
+                    color: '#808080',
                     backgroundColor: 'black',
                     display: 'inline-block',
-                                  }}
+                  }}
                 ></input>
                 <label
                   htmlFor="file"
                   style={{
-                    background: "#ffffff",
+                    background: '#ffffff',
                     border: '4px solid black',
                     borderRadius: '10px',
                     padding: '4px',
                     fontSize: '1.25em',
                     color: 'black',
-                     display: 'inline-block',
-                    
+                    display: 'inline-block',
                   }}
                 >
                   Choose a file
                 </label>
               </div>
-              <button  style={{
-                    background: 'transparent',
-                    opacity: '0',
-                    overflow: 'hidden',
-                    position: 'absolute',
-                    fontSize: '1.25em',
-                    color: 'white',
-                    backgroundColor: 'black',
-                    display: 'inline-block',
-                                  }} type="submit">Save Image</button>
-                         <label
-                  htmlFor="file"
-                  style={{
-                    background: "#ffffff",
-                    border: '4px solid black',
-                    borderRadius: '10px',
-                    padding: '4px',
-                    fontSize: '1.25em',
-                    color: 'black',
-                     display: 'inline-block',
-                    marginLeft: "10px"
-                  }}
-                >
+              <button
+                style={{
+                  background: 'transparent',
+                  opacity: '0',
+                  overflow: 'hidden',
+                  position: 'absolute',
+                  fontSize: '1.25em',
+                  color: '#808080',
+                  backgroundColor: 'black',
+                  display: 'inline-block',
+                }}
+                type="submit"
+              >
+                Save Image
+              </button>
+              <label
+                htmlFor="file"
+                style={{
+                  background: '#ffffff',
+                  border: '4px solid black',
+                  borderRadius: '10px',
+                  padding: '4px',
+                  fontSize: '1.25em',
+                  color: 'black',
+                  display: 'inline-block',
+                  marginLeft: '10px',
+                }}
+              >
                 Save
-              </label>        
+              </label>
             </form>
           </div>
         )}

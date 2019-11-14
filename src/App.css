@@ -9,7 +9,8 @@
     background: linear-gradient(to bottom, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9e30', endColorstr='#ff9e30', GradientType=0);
     box-sizing: border-box;
-    padding-bottom:100px;
+    padding:0 10px 100px 10px;
+    
 }
 
 .footer-menu{
@@ -19,13 +20,13 @@
     align-items:baseline;
     padding:20px 0 20px 0;
     width:100%;
-    height:50px;
     background-image: url(/images/beerfoam.png);
     background-repeat: no-repeat;
-    position:fixed;
+   position:fixed;
     left:0;
     top: 0;
-}
+    margin:0;
+    }
 
 .brand{
     width:64px;
