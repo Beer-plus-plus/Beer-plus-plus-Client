@@ -7,15 +7,15 @@ export default class Allbeers extends Component {
   };
 
   render() {
-    const { aBeer } = this.props;
+    const { aBeer, index } = this.props;
     return (
       <div className="beer-card">
-        <Link to={`/beers/api/${aBeer.id}`}>
+        <Link to={`/beers/api/${aBeer.id}/${index}`}>
           <h1>{aBeer.name}</h1>
           {aBeer.abv ? <h2>{`${aBeer.abv}º`}</h2> : <> </>}
           {aBeer.labels ? (
             <div className="brand">
-              <img src={aBeer.labels.icon} alt={aBeer.nameDisplay} />
+              <img src={aBeer.labels.medium} alt={aBeer.nameDisplay} />
             </div>
           ) : (
             <div className="brand">

@@ -17,17 +17,6 @@ class BeerService {
     }
   }
 
-  // async getAllBeers() {
-  //   try {
-  //     const data = await this.beers.get('/api/beer/');
-  //     const { data: aBeers } = data;
-  //     console.log(aBeers);
-  //     return (aBeers);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   async getBeerDetail(id) {
     try {
       const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
@@ -42,7 +31,16 @@ class BeerService {
     try {
       const data = await this.beers.get(`/api/beer/beeringredients/${id}`);
       const { data: ingredients } = data;
-     return ingredients;
+      return ingredients;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async addNewBeer(beer) {
+    try {
+      const data = await this.beers.post('/api/beer/new', beer);
+      return data;
     } catch (error) {
       console.log(error);
     }

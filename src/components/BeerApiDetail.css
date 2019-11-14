@@ -19,3 +19,12 @@
     font-weight: lighter;
     margin-top:10px;
 }
+
+.ingredients-pic{
+margin-top:10px;
+display: flex;
+flex-direction:row;
+justify-content: space-evenly;
+align-items: baseline;
+margin-bottom:10px;
+}

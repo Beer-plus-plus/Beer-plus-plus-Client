@@ -24,9 +24,9 @@ const App = () => {
         <AnonRoute exact path="/login" component={Login} />
         <AnonRoute exact path="/signup" component={Signup} />
         <PrivateRoute exact path="/user" component={UserView} />
-        <PrivateRoute exact path="/beers" component={BeersView} />
+        <PrivateRoute exact path="/beers/:page" component={BeersView} />
         <PrivateRoute exact path="/central" component={CentralView} />
-        <PrivateRoute exact path="/beers/api/:id" component={BeerApiDetail}/>
+        <PrivateRoute exact path="/beers/api/:id/:page" component={BeerApiDetail}/>
       </Router>
     </div>
   );

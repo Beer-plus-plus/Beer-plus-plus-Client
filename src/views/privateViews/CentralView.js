@@ -13,7 +13,7 @@ class Central extends Component {
           <h1>Beer++</h1>
           </div>
           <div className="Left-up-menu">
-            <Link to="/beers">
+            <Link to="/beers/1">
               <img src="/images/beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
             </Link>
           </div>

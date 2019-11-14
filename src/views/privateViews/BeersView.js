@@ -8,7 +8,7 @@ import Navbar from '../../components/Navbar';
 class BeersView extends Component {
   state = {
     beersNow: [],
-    index: 1,
+    index: undefined,
     loading: true,
     maxPage: 0,
     minPage: 1,
@@ -43,7 +43,7 @@ class BeersView extends Component {
       });
   };
 
-  upPage = async () => {
+  upPage = () => {
     let newIndex = this.state.index + 1;
     if (newIndex > this.state.maxPage) {
       newIndex = this.state.minPage;
@@ -75,7 +75,7 @@ class BeersView extends Component {
 
   render() {
     const { beersNow, loading } = this.state;
-
+    console.log('que tenemos aqui ',this.props.match.params.page)    
     return (
       <div className="container-beersView">
         <h1 className="titled">Beerpedia</h1>
@@ -96,7 +96,7 @@ class BeersView extends Component {
               {beersNow.map((aBeer, index) => {
                 return (
                   <div key={`${aBeer.id}-${index}`}>
-                    <BeerCard aBeer={aBeer} />
+                    <BeerCard aBeer={aBeer} index={this.state.index} />
                   </div>
                 );
               })}
