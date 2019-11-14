@@ -38,7 +38,7 @@ class BeerService {
   }
 
   async addNewBeer(beer) {
-    try {
+       try {
       const data = await this.beers.post('/api/beer/new', beer);
       return data;
     } catch (error) {

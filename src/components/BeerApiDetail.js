@@ -14,7 +14,42 @@ class BeerApiDetail extends Component {
   };
 
   handleOnClick = async () => {
+    const { beer, ingredients } = this.state;
+    const newBeer = { ...beer };
+    let newIngredients = [...ingredients];
+
+    if (!beer.description) {
+      newBeer.description = 'Description, not available.';
+    }
+    if (!beer.style.name) {
+      newBeer.style.name = 'Style, not available.';
+    }
+    if (!ingredients) {
+      newIngredients = [{ name: 'No ingredients added.' }];
+    }
+    if (!beer.abv) {
+      newBeer.abv = -1;
+    }
+    if (!beer.ibu) {
+      newBeer.ibu = -1;
+    }
+    if (!beer.origin) {
+      newBeer.origin = 'Origin, not available.';
+    }
+    if (!beer.labels) {
+      newBeer.labels = { medium: '/images/na.svg' };
+    }
+    if (!beer.brand) {
+      newBeer.brand = 'Brand, not available.';
+    }
+    if (!beer.productionYear) {
+      newBeer.productionYear = -1;
+    }
+    if (!beer.id) {
+      newBeer.id = 'na';
+    }
     try {
+      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
       await beerService.addNewBeer(this.state);
     } catch (error) {
       console.error(error);
@@ -43,8 +78,8 @@ class BeerApiDetail extends Component {
 
   render() {
     const { beer, loading, ingredients } = this.state;
-     
-     console.log(this.props.user._id);
+
+    console.log(this.props.user._id);
     return (
       <div>
         {!loading ? (
