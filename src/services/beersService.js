@@ -7,7 +7,7 @@ class BeerService {
 
   async getAllBeers(index) {
     try {
-      const allBeers = await this.beers.get(`/api/beer/${index}`);
+      const allBeers = await this.beers.get(`/api/beer/${index}/${this.props.user.id}`);
       const {
         data: { beers, numberOfPages },
       } = allBeers;
