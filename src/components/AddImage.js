@@ -57,7 +57,7 @@ class AddImage extends Component {
     return (
       <div>
         {!loading && (
-          <div style={{ marginTop: '300px' }}>
+          <div style={{ marginTop: '75px' }}>
             <img src={imageUrl} alt="User profile" style={{ margin: '5px', width: '50px' }}></img>
             <form
               className="form-password-container"

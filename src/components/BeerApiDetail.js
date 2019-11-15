@@ -10,7 +10,11 @@ class BeerApiDetail extends Component {
     beer: {},
     loading: true,
     ingredients: {},
-    _id: this.props.user._id,
+    userId: this.props.user._id.toString(),
+  };
+
+  handleClickPageBack = () => {
+    this.props.history.goBack();
   };
 
   handleOnClick = async () => {
@@ -49,7 +53,9 @@ class BeerApiDetail extends Component {
       newBeer.id = 'na';
     }
     try {
-      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
+      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] }, () => {
+        console.log(this.state);
+      });
       await beerService.addNewBeer(this.state);
     } catch (error) {
       console.error(error);
@@ -70,7 +76,6 @@ class BeerApiDetail extends Component {
       this.setState({ ingredients: dataIngredients }, () => {
         this.setState({ loading: false });
       });
-      console.log('los ingredientes son ', this.state.ingredients);
     } catch (error) {
       console.log(error);
     }
@@ -79,18 +84,24 @@ class BeerApiDetail extends Component {
   render() {
     const { beer, loading, ingredients } = this.state;
 
-    console.log(this.props.user._id);
     return (
       <div>
         {!loading ? (
           <div className="beerdetail-container">
-            <Link to={`/beers/${this.props.match.params.page}`}>
+            {/* <Link to={`/beers/${this.props.match.params.page}`}>
               <img
                 src="/images/two-left-arrows.svg"
                 alt="back to beer list"
                 style={{ width: '50px', marginTop: '100px' }}
               ></img>
-            </Link>
+            </Link> */}
+            <button onClick={this.handleClickPageBack}>
+              <img
+                src="/images/two-left-arrows.svg"
+                alt="back to beer list"
+                style={{ width: '50px', marginTop: '100px' }}
+              ></img>
+            </button>
             <h1>{beer.nameDisplay}</h1>
             {beer.labels && <img src={beer.labels.medium} alt="logo"></img>}
             <div></div>

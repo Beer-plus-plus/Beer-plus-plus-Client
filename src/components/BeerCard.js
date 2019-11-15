@@ -6,6 +6,8 @@ export default class Allbeers extends Component {
     beers: [],
   };
 
+
+
   render() {
     const { aBeer, index } = this.props;
     return (

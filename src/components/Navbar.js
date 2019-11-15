@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className="footer-menu">
       <div>
-        <Link to={'/beers/1'} style={{ display: 'inline-block' }}>
+        <Link to={'/beers'} style={{ display: 'inline-block' }}>
           <img src="/images/beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
         </Link>
       </div>

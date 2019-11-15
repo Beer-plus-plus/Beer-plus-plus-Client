@@ -5,7 +5,8 @@ class BeerCreate extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        {/* <h1 style={{color: 'black'}}>Create a beer</h1> */}
+        {/* <Navbar /> */}
       </div>
     );
   }
