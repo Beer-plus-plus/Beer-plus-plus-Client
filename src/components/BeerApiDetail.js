@@ -53,9 +53,7 @@ class BeerApiDetail extends Component {
       newBeer.id = 'na';
     }
     try {
-      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] }, () => {
-        console.log(this.state);
-      });
+      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
       await beerService.addNewBeer(this.state);
     } catch (error) {
       console.error(error);
@@ -68,7 +66,6 @@ class BeerApiDetail extends Component {
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
-      console.log('beer info', beer);
       this.setState({ beer: { ...beer } }, () => {
         this.setState({ loading: false });
       });

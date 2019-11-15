@@ -20,7 +20,6 @@ class BeerService {
   async getBeerDetail(id) {
     try {
       const aBeer = await this.beers.get(`/api/beer/beerdetail/${id}`);
-      console.log(aBeer);
       return aBeer;
     } catch (error) {
       console.log(error);
@@ -39,9 +38,7 @@ class BeerService {
 
   async addNewBeer(beer) {
        try {
-         console.log('la birra tiene ',beer)
       const data = await this.beers.post('/api/beer/new', beer);
-      console.log(beer)
       return data;
     } catch (error) {
       console.log(error);

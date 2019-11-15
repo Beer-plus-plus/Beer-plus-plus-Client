@@ -24,9 +24,7 @@ class AddImage extends Component {
     reader.onload = () => {
       const output = document.getElementById('output_image');
       output.src = reader.result;
-      console.log('entro aqui');
     };
-    console.log(reader.readAsDataURL(event.target.files[0]));
     this.setState({ imageUrl: reader.readAsDataURL(event.target.files[0]) });
   };
 
@@ -37,7 +35,6 @@ class AddImage extends Component {
     userService
       .handleUpload(this.props.user._id, uploadData)
       .then(response => {
-        console.log(response);
         this.setState({ imageUrl: response.secure_url });
         this.props.user.img.imageUrl = this.state.imageUrl;
       })
@@ -46,14 +43,12 @@ class AddImage extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props.user.img.imageUrl);
     this.setState({ loading: true, imageUrl: this.props.user.img.imageUrl });
     this.setState({ loading: false });
   };
 
   render() {
     const { imageUrl, loading } = this.state;
-    console.log(imageUrl);
     return (
       <div>
         {!loading && (

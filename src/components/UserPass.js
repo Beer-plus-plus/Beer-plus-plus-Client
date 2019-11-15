@@ -16,7 +16,6 @@ class UserPass extends Component {
   handleForm = e => {
     e.preventDefault();
     const { oldPass, newPass, confirmPass } = this.state;
-    console.log(oldPass, newPass, confirmPass);
     if (newPass === confirmPass && newPass !== oldPass) {
       userService.userUpdatePass(this.props.user._id, oldPass, newPass);
       this.setState({ oldPass: '', newPass: '', confirmPass: '' });
@@ -40,8 +39,8 @@ class UserPass extends Component {
           <input type="password" name="confirmPass" value={confirmPass} onChange={this.handleChange} />
         </div>
         <div className="organize-password">
-        <input className="button" type="submit" value="Change password" ></input>
-     </div>
+          <input className="button" type="submit" value="Change password"></input>
+        </div>
       </form>
     );
   }
