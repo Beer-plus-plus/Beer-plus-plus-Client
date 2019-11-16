@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import beerService from '../services/beersService';
+import userService from '../services/userService';
 import Navbar from './Navbar';
 import './BeerApiDetail.css';
 import { withAuth } from '../Context/AuthContext';
@@ -11,13 +11,21 @@ class BeerApiDetail extends Component {
     loading: true,
     ingredients: {},
     userId: this.props.user._id.toString(),
+    lock: undefined,
   };
 
   handleClickPageBack = () => {
     this.props.history.goBack();
   };
 
+  handleStopPreferred = async () => {
+    this.setState({ loading: true });
+    const message = await userService.stopTobePreferred(this.props.user._id, this.state.beer.idbplusplus);
+    this.setState({ loading: false, lock: false });
+  };
+
   handleOnClick = async () => {
+    this.setState({ loading: true });
     const { beer, ingredients } = this.state;
     const newBeer = { ...beer };
     let newIngredients = [...ingredients];
@@ -50,11 +58,17 @@ class BeerApiDetail extends Component {
       newBeer.productionYear = -1;
     }
     if (!beer.id) {
-      newBeer.id = 'na';
+      newBeer.id = 'none';
     }
     try {
-      await this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
-      await beerService.addNewBeer(this.state);
+      this.setState({ loading: true });
+      this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
+      const info = await beerService.addNewBeer(this.props.user._id, beer, ingredients);
+
+      const { data: idBeer } = info;
+      console.log('this is info ', idBeer);
+      await userService.tobePreferred(this.props.user._id, idBeer);
+      this.setState({ loading: false, lock: true });
     } catch (error) {
       console.error(error);
     }
@@ -63,35 +77,35 @@ class BeerApiDetail extends Component {
   componentDidMount = async () => {
     this.setState({ loading: true });
     const { id } = this.props.match.params;
+
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
       this.setState({ beer: { ...beer } }, () => {
-        this.setState({ loading: false });
+        this.setState({ loading: false }, console.log('Estado de beer', this.state.beer));
       });
+      if (this.state.beer.state === 'lock') {
+        this.setState({ lock: true });
+      } else {
+        this.setState({ lock: false });
+      }
       const dataIngredients = await beerService.gerBeerDetailIngredients(id);
       this.setState({ ingredients: dataIngredients }, () => {
         this.setState({ loading: false });
       });
+      console.log(beer);
     } catch (error) {
       console.log(error);
     }
   };
 
   render() {
-    const { beer, loading, ingredients } = this.state;
+    const { beer, loading, ingredients, lock } = this.state;
 
     return (
       <div>
         {!loading ? (
           <div className="beerdetail-container">
-            {/* <Link to={`/beers/${this.props.match.params.page}`}>
-              <img
-                src="/images/two-left-arrows.svg"
-                alt="back to beer list"
-                style={{ width: '50px', marginTop: '100px' }}
-              ></img>
-            </Link> */}
             <button onClick={this.handleClickPageBack}>
               <img
                 src="/images/two-left-arrows.svg"
@@ -128,8 +142,8 @@ class BeerApiDetail extends Component {
               {beer.origin && <p>Origin: {`${beer.origin} cal`}</p>}
             </div>
             <div></div>
-            <button onClick={this.handleOnClick}>Add to preferred</button>
-            <button>Stop being preferred</button>
+            {lock !== true && <button onClick={this.handleOnClick}>Add to preferred</button>}
+            {lock === true && <button onClick={this.handleStopPreferred}>Stop being preferred</button>}
             <Navbar />
           </div>
         ) : (

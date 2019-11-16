@@ -38,6 +38,25 @@ class UserService {
       .then(res => res.data)
       .catch(this.errorHandler);
   }
+
+  async stopTobePreferred(id, beerId) {
+    try {
+      const data = await this.userConnect.put(`/api/user/${id}/unpreferredBeer`, { beerId });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async tobePreferred(id, beerId) {
+    try {
+      console.log(id, beerId);
+      const data = await this.userConnect.put(`/api/user/${id}/preferredBeer`, { beerId });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 const userService = new UserService();

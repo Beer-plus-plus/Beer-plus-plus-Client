@@ -23,7 +23,9 @@ export default class Allbeers extends Component {
             <div className="brand">
               <img src="/images/na.svg" alt={aBeer.nameDisplay} />
             </div>
+            
           )}
+          <div>{ aBeer.state === 'lock' && <div><p style={{color: 'tomato'}}>Preferred beer</p></div>}</div>
         </Link>
       </div>
     );

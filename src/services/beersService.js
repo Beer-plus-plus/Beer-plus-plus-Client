@@ -5,9 +5,9 @@ class BeerService {
     this.beers = axios.create({ baseURL: process.env.REACT_APP_BACKEND_BASE_URL, withCredentials: true });
   }
 
-  async getAllBeers(index) {
+  async getAllBeers(index, user) {
     try {
-      const allBeers = await this.beers.get(`/api/beer/${index}/${this.props.user.id}`);
+      const allBeers = await this.beers.get(`/api/beer/${index}/${user._id}`);
       const {
         data: { beers, numberOfPages },
       } = allBeers;
@@ -36,9 +36,10 @@ class BeerService {
     }
   }
 
-  async addNewBeer(beer) {
-       try {
-      const data = await this.beers.post('/api/beer/new', beer);
+  async addNewBeer(userId, beer, ingredients) {
+    try {
+      const data = await this.beers.post('/api/beer/new', { userId, beer, ingredients });
+      console.log('esto es data', data);
       return data;
     } catch (error) {
       console.log(error);

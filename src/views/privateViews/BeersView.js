@@ -18,9 +18,10 @@ class BeersView extends Component {
 
   gotoPage = async page => {
     beersService
-      .getAllBeers(page)
+      .getAllBeers(page, this.props.user)
       .then(({ beers, numberOfPages }) => {
         this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
+        
       })
       .catch(error => {
         console.log(error);
