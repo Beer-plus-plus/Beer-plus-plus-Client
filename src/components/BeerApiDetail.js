@@ -8,15 +8,15 @@ import { withAuth } from '../Context/AuthContext';
 class BeerApiDetail extends Component {
   state = {
     beer: {},
-    loading: true,
+    loading: false,
     ingredients: {},
     userId: this.props.user._id.toString(),
     lock: undefined,
   };
 
-  handleClickPageBack = () => {
-    this.props.history.goBack();
-  };
+  // handleClickPageBack = () => {
+  //   this.props.history.goBack();
+  // };
 
   handleStopPreferred = async () => {
     this.setState({ loading: true });
@@ -25,11 +25,10 @@ class BeerApiDetail extends Component {
   };
 
   handleOnClick = async () => {
-    this.setState({ loading: true });
+    this.setState({ loading: true }, console.log('%c%s', 'color: #733d00', ' entro aqui'));
     const { beer, ingredients } = this.state;
     const newBeer = { ...beer };
     let newIngredients = [...ingredients];
-
     if (!beer.description) {
       newBeer.description = 'Description, not available.';
     }
@@ -61,14 +60,12 @@ class BeerApiDetail extends Component {
       newBeer.id = 'none';
     }
     try {
-      this.setState({ loading: true });
-      this.setState({ beer: { ...newBeer }, ingredients: [...ingredients] });
-      const info = await beerService.addNewBeer(this.props.user._id, beer, ingredients);
-
+      this.setState({ beer: { ...newBeer }, ingredients: [...newIngredients] });
+      const info = await beerService.addNewBeer(this.props.user._id, newBeer, newIngredients);
       const { data: idBeer } = info;
-      console.log('this is info ', idBeer);
+      console.log('aqui ando');
       await userService.tobePreferred(this.props.user._id, idBeer);
-      this.setState({ loading: false, lock: true });
+      this.setState({ loading: false, lock: true }, console.log('%c%s', 'color: #733d00', ' salgo de aqui'));
     } catch (error) {
       console.error(error);
     }
@@ -81,19 +78,20 @@ class BeerApiDetail extends Component {
     try {
       const data = await beerService.getBeerDetail(id);
       const { data: beer } = data;
-      this.setState({ beer: { ...beer } }, () => {
-        this.setState({ loading: false }, console.log('Estado de beer', this.state.beer));
-      });
-      if (this.state.beer.state === 'lock') {
-        this.setState({ lock: true });
-      } else {
-        this.setState({ lock: false });
-      }
+      this.setState({ beer: { ...beer } });
       const dataIngredients = await beerService.gerBeerDetailIngredients(id);
       this.setState({ ingredients: dataIngredients }, () => {
         this.setState({ loading: false });
       });
-      console.log(beer);
+      if (this.state.beer.state) {
+        if (this.state.beer.state === 'lock') {
+          this.setState({ lock: true });
+        } else {
+          this.setState({ lock: false });
+        }
+      } else {
+        this.setState({ lock: false });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -104,7 +102,7 @@ class BeerApiDetail extends Component {
 
     return (
       <div>
-        {!loading ? (
+        {!loading && (
           <div className="beerdetail-container">
             <button onClick={this.handleClickPageBack}>
               <img
@@ -142,14 +140,16 @@ class BeerApiDetail extends Component {
               {beer.origin && <p>Origin: {`${beer.origin} cal`}</p>}
             </div>
             <div></div>
-            {lock !== true && <button onClick={this.handleOnClick}>Add to preferred</button>}
-            {lock === true && <button onClick={this.handleStopPreferred}>Stop being preferred</button>}
+            {!lock && <button onClick={this.handleOnClick}>Add to preferred</button>}
+            {lock && <button onClick={this.handleStopPreferred}>Stop being preferred</button>}
             <Navbar />
           </div>
-        ) : (
+        )}
+        {loading && (
           <div>
             <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
           </div>
+        )}
         )}
       </div>
     );

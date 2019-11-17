@@ -1,5 +1,6 @@
 .beerdetail-container{
-   font-family: 'Baloo Tamma';
+   /* font-family: 'Baloo Tamma'; */
+   font-family:Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
    font-size: 24;
    padding:10px;
    width:100%;

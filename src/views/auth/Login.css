@@ -1,5 +1,8 @@
 .login-container {
-  font-family: 'Baloo Tamma', cursive;
+  /* font-family: 'Baloo Tamma', cursive; */
+      font-family:Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
+  width:100%;
+
   font-size:22px;
 }
 
@@ -41,7 +44,8 @@
 }
 
 .user-container input {
-  font-family: 'Baloo Tamma', cursive;
+  font-family:Gotham,Arial,Helvetica Neue,Helvetica,sans-serif;
+  /* font-family: 'Baloo Tamma', cursive; */
   font-size: 22px;
   width: 100%;
   border-radius: 20px;

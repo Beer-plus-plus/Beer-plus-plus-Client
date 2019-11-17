@@ -37,6 +37,7 @@ class BeerService {
   }
 
   async addNewBeer(userId, beer, ingredients) {
+    console.log('%c⧭', 'color: #e50000', ingredients);
     try {
       const data = await this.beers.post('/api/beer/new', { userId, beer, ingredients });
       console.log('esto es data', data);

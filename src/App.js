@@ -29,7 +29,7 @@ const App = () => {
         <PrivateRoute exact path="/beers/new" component={BeerCreate} />
         <PrivateRoute exact path="/beers" component={BeersView} />
         <PrivateRoute exact path="/central" component={CentralView} />
-        <PrivateRoute exact path="/beers/api/:id/:page" component={BeerApiDetail} />
+        <PrivateRoute exact path="/beers/api/:id" component={BeerApiDetail} />
         <PrivateRoute exact path="/logout" component={Logout} />
       </Router>
     </div>

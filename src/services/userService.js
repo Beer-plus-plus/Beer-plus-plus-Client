@@ -52,6 +52,8 @@ class UserService {
     try {
       console.log(id, beerId);
       const data = await this.userConnect.put(`/api/user/${id}/preferredBeer`, { beerId });
+      
+      console.log('%c%s', 'color: #00bf00', 'salgo del server de tobepreferred');
       return data;
     } catch (error) {
       console.log(error);
