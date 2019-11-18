@@ -56,6 +56,7 @@ class BeersView extends Component {
 
     return (
       <div className="container-beersView">
+
         {!loading ? (
           <div>
             <div className="titled-newbeer-wrapper">
