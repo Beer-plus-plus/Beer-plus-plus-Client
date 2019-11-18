@@ -58,9 +58,9 @@ class BeersView extends Component {
     return (
       <div className="container-beersView">
         <h1 className="titled">Beerpedia</h1>
-        {/* <Link to="/beers/new">
+        <Link to="/beers/new">
           <img src="/images/beer+.svg" alt="arrow left sign" style={{ width: '50px' }}></img>
-        </Link> */}
+        </Link>
         <button className="buttonPage left" onClick={this.downPage}>
           <img src="/images/left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
         </button>
