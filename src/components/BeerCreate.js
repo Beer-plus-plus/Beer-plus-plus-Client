@@ -9,12 +9,13 @@ class BeerCreate extends Component {
   };
 
   handleChange = e => {
-    const { user } = this.state;
-    this.setState({ user: { ...user, [e.target.name]: e.target.value } });
+    const { beer } = this.state;
+    this.setState({ beer: { ...beer, [e.target.name]: e.target.value } });
   };
 
-  handleFormSubmit = () => {
-
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('Sending...')
   };
 
   render() {
