@@ -29,46 +29,56 @@ class UserForm extends Component {
 
   render() {
     const { user, loading } = this.state;
-    return (<div>
-      {!loading ? (
-      <form className="form-user-container" onSubmit={this.handleFormSubmit}>
-        <div className="input-container">
-          <label htmlFor="name">name</label>
-          <input type="text" name="name" placeholder="your name" value={(user.name === null) ?  "" : user.name} onChange={this.handleChange} />
-        </div>
+    return (
+      <div>
+        {!loading ? (
+          <form className="form-user-container" onSubmit={this.handleFormSubmit}>
+            <div className="input-container">
+              <label htmlFor="name">name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="your name"
+                value={user.name === null ? '' : user.name}
+                onChange={this.handleChange}
+              />
+            </div>
 
-        <div className="input-container">
-          <label htmlFor="lastName">Last name</label>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="your Last name"
-            value={(user.lastName === null) ?  "" : user.lastName}
-            onChange={this.handleChange}
-          />
-        </div>
+            <div className="input-container">
+              <label htmlFor="lastName">Last name</label>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="your Last name"
+                value={user.lastName === null ? '' : user.lastName}
+                onChange={this.handleChange}
+              />
+            </div>
 
-        <div className="input-container">
-          <label htmlFor="email">email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="your mail"
-            required
-            value={user.email}
-            onChange={this.handleChange}
-          />
-        </div >
-        <div  className="update">
-          <input className="button" type="submit" value="Update"></input>
-        </div>
-      </form>) : (
+            <div className="input-container">
+              <label htmlFor="email">email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="your mail"
+                required
+                value={user.email}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="update">
+              <input className="button" type="submit" value="Update"></input>
+            </div>
+            <input type="submit">Create a beer</input>
+            <div></div>
+          </form>
+        ) : (
           <div>
             <img src="/images/loading2.gif" alt="beer loading"></img>
           </div>
         )}
-
-   </div> );
+      </div>
+    );
   }
 }
 

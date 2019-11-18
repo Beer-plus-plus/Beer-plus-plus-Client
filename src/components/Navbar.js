@@ -21,6 +21,7 @@ const Navbar = () => {
           <img src="/images/user.svg" alt="User menu profile" style={{ width: '50px' }}></img>
         </Link>
       </div>
+      
     </div>
   );
 };

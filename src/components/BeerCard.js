@@ -7,10 +7,10 @@ export default class Allbeers extends Component {
   };
 
   render() {
-    const { aBeer, index } = this.props;
+    const { aBeer } = this.props;
     let beerBackground = '';
     if (aBeer.labels) {
-      beerBackground = `url(\'${aBeer.labels.medium}\')`;
+      beerBackground = `url('${aBeer.labels.medium}')`;
     } else {
       beerBackground = 'url ("/images/na.svg")';
     }

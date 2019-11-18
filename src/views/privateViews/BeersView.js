@@ -21,7 +21,6 @@ class BeersView extends Component {
       .getAllBeers(page, this.props.user)
       .then(({ beers, numberOfPages }) => {
         this.setState({ beersNow: [...beers], loading: false, maxPage: numberOfPages });
-        
       })
       .catch(error => {
         console.log(error);
@@ -57,18 +56,22 @@ class BeersView extends Component {
 
     return (
       <div className="container-beersView">
-        <h1 className="titled">Beerpedia</h1>
-        {/* <Link to="/beers/new">
-          <img src="/images/beer+.svg" alt="arrow left sign" style={{ width: '50px' }}></img>
-        </Link> */}
-        <button className="buttonPage left" onClick={this.downPage}>
-          <img src="/images/left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
-        </button>
-        <button className="buttonPage right" onClick={this.upPage}>
-          <img src="/images/arrow-pointing-to-right.svg" alt="arrow right sign" style={{ width: '35px' }} />
-        </button>
         {!loading ? (
           <div>
+            <div className="titled-newbeer-wrapper">
+              <h1 className="titled">Beerpedia</h1>
+              <div className="newbeer-wrapper">
+                <Link to="/beer/new">
+                  <img src="/images/beer+.svg" alt="to add a beer" style={{ width: '50px' }}></img>
+                </Link>
+              </div>
+            </div>
+            <button className="buttonPage left" onClick={this.downPage}>
+              <img src="/images/left-arrow.svg" alt="arrow left sign" style={{ width: '35px' }}></img>
+            </button>
+            <button className="buttonPage right" onClick={this.upPage}>
+              <img src="/images/arrow-pointing-to-right.svg" alt="arrow right sign" style={{ width: '35px' }} />
+            </button>
             <div>
               <label htmlFor="textFilter">Search...</label>
               <input type="text" name="textFilter" placeholder="Search your beer..." onChange={this.handleChange} />

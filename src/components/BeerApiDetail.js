@@ -20,7 +20,7 @@ class BeerApiDetail extends Component {
 
   handleStopPreferred = async () => {
     this.setState({ loading: true });
-    const message = await userService.stopTobePreferred(this.props.user._id, this.state.beer.idbplusplus);
+    await userService.stopTobePreferred(this.props.user._id, this.state.beer.idbplusplus);
     this.setState({ loading: false, lock: false });
   };
 
