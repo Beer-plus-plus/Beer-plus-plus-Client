@@ -37,12 +37,22 @@ class BeerService {
   }
 
   async addNewBeer(userId, beer, ingredients) {
-    console.log( 'los mios', ingredients);
+    console.log('los mios', ingredients);
     try {
-       console.log('%c%s', 'color: #00e600', ingredients);
+      console.log('%c%s', 'color: #00e600', ingredients);
       const data = await this.beers.post('/api/beer/new', { userId, beer, ingredients });
       console.log('esto es data', data);
       return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async beerListDB() {
+    try {
+      const allBeers = await this.beers.get(`/api/beer/db`);
+      const { data: beers } = allBeers;
+           return (beers);
     } catch (error) {
       console.log(error);
     }

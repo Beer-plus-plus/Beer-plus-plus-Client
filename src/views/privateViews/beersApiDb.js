@@ -15,8 +15,8 @@ class beersApiDb extends Component {
             <img src="/images/beerapi.svg" alt="beer api Link"></img>
             <h3>Beer Api</h3>
           </Link>
-          <Link>
-            <img src="/images/beerdb.svg" alt="beer db Link" ></img>
+          <Link to="/beersdb">
+            <img src="/images/beerdb.svg" alt="beer db Link"></img>
             <h3>Beer DB</h3>
           </Link>
         </div>
