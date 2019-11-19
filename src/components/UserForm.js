@@ -69,7 +69,7 @@ class UserForm extends Component {
             <div className="update">
               <input className="button" type="submit" value="Update"></input>
             </div>
-            <input type="submit">Create a beer</input>
+            <input type="submit" value="Create a beer"></input>
             <div></div>
           </form>
         ) : (

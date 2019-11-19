@@ -10,10 +10,10 @@ class Central extends Component {
       <div className="centralmenu">
         <div className="menu-circular">
           <div className="title-wrapper">
-          <h1>Beer++</h1>
+            <h1>Beer++</h1>
           </div>
           <div className="Left-up-menu">
-            <Link to="/beers">
+            <Link to="/beersapidb">
               <img src="/images/beer.svg" alt="Beer menu" style={{ width: '50px' }}></img>
             </Link>
           </div>

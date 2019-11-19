@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import UserView from './views/privateViews/UserViews';
 import BeersView from './views/privateViews/BeersView';
 import CentralView from './views/privateViews/CentralView';
+import beersApiDb from './views/privateViews/beersApiDb';
 import Login from './views/auth/Login';
 import Signup from './views/auth/Signup';
 import BeerApiDetail from './components/BeerApiDetail';
@@ -26,6 +27,7 @@ const App = () => {
         <AnonRoute exact path="/login" component={Login} />
         <AnonRoute exact path="/signup" component={Signup} />
         <PrivateRoute exact path="/user" component={UserView} />
+        <PrivateRoute exact path="/beersapidb" component={beersApiDb} />
         <PrivateRoute exact path="/beers" component={BeersView} />
         <PrivateRoute exact path="/beer/new" component={BeerCreate} />
         <PrivateRoute exact path="/central" component={CentralView} />

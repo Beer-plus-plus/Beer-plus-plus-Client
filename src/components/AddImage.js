@@ -128,7 +128,7 @@ class AddImage extends Component {
         )}
         {loading && loading && (
           <div>
-            <img src="/images//loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="/images//loading2.gif" alt="beer loading" style={{ width: '100%'}}></img>
           </div>
         )}
       </div>

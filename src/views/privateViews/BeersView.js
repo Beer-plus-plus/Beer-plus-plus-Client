@@ -56,7 +56,6 @@ class BeersView extends Component {
 
     return (
       <div className="container-beersView">
-
         {!loading ? (
           <div>
             <div className="titled-newbeer-wrapper">
@@ -90,7 +89,7 @@ class BeersView extends Component {
           </div>
         ) : (
           <div>
-            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%', paddingBottom:'100px'}}></img>
           </div>
         )}
       </div>

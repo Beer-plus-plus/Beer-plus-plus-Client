@@ -26,29 +26,31 @@ class UserView extends Component {
   render() {
     const { user, loading } = this.state;
     return (
-      <div className="container-userview">
-        {!loading && (
-          <div>
-            <h1>{user.username}'PROFILE</h1>
-            <AddImage user={user} />
-            <UserForm user={user} />
+      <div>
+        <Navbar user={this.props.user} />
+        <div className="container-userview">
+          {!loading && (
+            <div>
+              <h1>{user.username}'PROFILE</h1>
+              <AddImage user={user} />
+              <UserForm user={user} />
 
-            <UserPass user={user} />
-            <div className="organize-button">
-              <button className="button">Preferred Sites</button>
-              <button className="button">Preferred Beers</button>
-              <button className="button" onClick={this.props.handleLogout}>
-                logout
-              </button>
-              <Navbar user={this.props.user} />
+              <UserPass user={user} />
+              <div className="organize-button">
+                <button className="button">Preferred Sites</button>
+                <button className="button">Preferred Beers</button>
+                <button className="button" onClick={this.props.handleLogout}>
+                  logout
+                </button>
+              </div>
             </div>
-          </div>
-        )}
-        {loading && (
-          <div>
-            <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
-          </div>
-        )}
+          )}
+          {loading && (
+            <div>
+              <img src="/images/loading2.gif" alt="beer loading" style={{ width: '100%' }}></img>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
