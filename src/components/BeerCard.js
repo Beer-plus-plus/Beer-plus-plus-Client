@@ -19,20 +19,11 @@ export default class Allbeers extends Component {
         <Link to={`/beers/api/${aBeer.id}`}>
           <h1>{aBeer.name}</h1>
           {aBeer.abv ? <h2>{`${aBeer.abv}º`}</h2> : <> </>}
-          {/* {aBeer.labels ? (
-            <div className="brand">
-              <img src={aBeer.labels.medium} alt={aBeer.nameDisplay} />
-            </div>
-          ) : (
-            <div className="brand">
-              <img src="/images/na.svg" alt={aBeer.nameDisplay} />
-            </div>
-            
-          )} */}
+
           <div>
             {aBeer.state === 'lock' && (
               <div>
-                <p style={{ color: 'tomato' }}>Preferred beer</p>
+                <span style={{ color: 'tomato', background: 'white' }}>Preferred beer</span>
               </div>
             )}
           </div>

@@ -26,7 +26,7 @@ class BeerService {
     }
   }
 
-  async gerBeerDetailIngredients(id) {
+  async getBeerDetailIngredients(id) {
     try {
       const data = await this.beers.get(`/api/beer/beeringredients/${id}`);
       const { data: ingredients } = data;
@@ -37,8 +37,9 @@ class BeerService {
   }
 
   async addNewBeer(userId, beer, ingredients) {
-    console.log('%c⧭', 'color: #e50000', ingredients);
+    console.log( 'los mios', ingredients);
     try {
+       console.log('%c%s', 'color: #00e600', ingredients);
       const data = await this.beers.post('/api/beer/new', { userId, beer, ingredients });
       console.log('esto es data', data);
       return data;
