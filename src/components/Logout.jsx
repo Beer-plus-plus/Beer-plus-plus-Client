@@ -1,8 +1,8 @@
 import React from 'react';
 import { withAuth } from '../Context/AuthContext';
 
-const Logout = props => {
-  props.handleLogout();
+const Logout = ({ handleLogout }) => {
+  handleLogout();
   return <> </>;
 };
 
