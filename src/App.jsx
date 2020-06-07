@@ -1,4 +1,4 @@
-/* eslint-disable linebreak-style */
+
 import React from 'react';
 import './reset.css';
 import './normalizer.css';
@@ -6,7 +6,7 @@ import './App.css';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import UserView from './views/privateViews/UserViews';
+import { UserView } from './views/privateViews/UserViews';
 import BeersView from './views/privateViews/BeersView';
 import CentralView from './views/privateViews/CentralView';
 import beersApiDb from './views/privateViews/beersApiDb';
@@ -34,7 +34,6 @@ function App() {
         <PrivateRoute exact path="/user" component={UserView} />
         <PrivateRoute exact path="/beersapidb" component={beersApiDb} />
         <PrivateRoute exact path="/beersdb" component={BeersDB} />
-
         <PrivateRoute exact path="/beers" component={BeersView} />
         <PrivateRoute exact path="/beer/new" component={BeerCreate} />
         <PrivateRoute exact path="/central" component={CentralView} />

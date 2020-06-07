@@ -1,14 +1,16 @@
-/* eslint-disable max-classes-per-file */
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, useState, useEffect } from 'react';
+import propTypes from 'prop-types';
+
 import authService from '../services/authService';
+
 const AuthContext = createContext();
 
 const { Provider } = AuthContext;
 
 const AuthConsumer = AuthContext.Consumer;
 
-export const withAuth = Comp => {
-  return class WithAuth extends Component {
+export const withAuth = Comp =>
+  class WithAuth extends Component {
     render() {
       return (
         <AuthConsumer>
@@ -28,34 +30,52 @@ export const withAuth = Comp => {
       );
     }
   };
-};
 
-export default class AuthProvider extends Component {
+export default AuthProvider = ({ children }) => {
   state = {
     isLoggedin: false,
     user: undefined,
     isLoading: true,
   };
 
-  componentDidMount() {
+  const [isLoggein, setIsLoggein] = useState(false);
+  const [user, setUser] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
     authService
       .me()
       .then(user => {
-        this.setState({
-          isLoggedin: true,
-          user,
-          isLoading: false,
-        });
+        setIsLoggein(true);
+        setUser({ ...user });
+        setIsLoading(false);
+
         console.log('me', user);
       })
       .catch(() => {
-        this.setState({
-          isLoading: false,
-        });
+        setIsLoading(false);
       });
-  }
+  }, []);
 
-  handleLogin = user => {
+  // componentDidMount() {
+  //   authService
+  //     .me()
+  //     .then(user => {
+  //       this.setState({
+  //         isLoggedin: true,
+  //         user,
+  //         isLoading: false,
+  //       });
+  //       console.log('me', user);
+  //     })
+  //     .catch(() => {
+  //       this.setState({
+  //         isLoading: false,
+  //       });
+  //     });
+  // }
+
+  const handleLogin = user => {
     authService
       .login(user)
       .then(loggedUser => {
@@ -72,7 +92,7 @@ export default class AuthProvider extends Component {
       });
   };
 
-  handleSignup = user => {
+  const handleSignup = user => {
     authService
       .signup(user)
       .then(loggedUser => {
@@ -89,7 +109,7 @@ export default class AuthProvider extends Component {
       });
   };
 
-  handleLogout = () => {
+  const handleLogout = () => {
     this.setState({
       isLoading: true,
     });
@@ -111,26 +131,29 @@ export default class AuthProvider extends Component {
       });
   };
 
-  render() {
-    const { isLoading, isLoggedin, user } = this.state;
-    const { children } = this.props;
-    if (isLoading) {
-      return <div>Loading...</div>;
-    }
-    return (
-      <Provider
-        value={{
-          isLoading,
-          isLoggedin,
-          user,
+  // render() {
+  // const { isLoading, isLoggedin, user } = this.state;
 
-          handleLogin: this.handleLogin,
-          handleLogout: this.handleLogout,
-          handleSignup: this.handleSignup,
-        }}
-      >
-        {children}
-      </Provider>
-    );
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-}
+  return (
+    <Provider
+      value={{
+        isLoading,
+        isLoggedin,
+        user,
+        handleLogin,
+        handleLogout,
+        handleSignup,
+      }}
+    >
+      {children}
+    </Provider>
+  );
+  // }
+};
+
+AuthContext.propTypes = {
+  children: propTypes.element.isRequired,
+};

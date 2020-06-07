@@ -10,12 +10,12 @@ function PrivateRoute({ component: Comp, isLoggedin, ...rest }) {
         isLoggedin ? (
           <Comp {...props} />
         ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-            }}
-          />
-        )
+            <Redirect
+              to={{
+                pathname: "/",
+              }}
+            />
+          )
       }
     />
   );
