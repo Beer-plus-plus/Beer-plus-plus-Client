@@ -33,7 +33,7 @@ class Login extends Component {
     return (
       <div className="login-container margin-login">
         <Logo />
-        <form className="form-container" style={{ margin: 0 }}>
+        <form className="form-container" >
           <div className="user-container login-container">
             <img src="/images/user.svg" alt="user" title="User Icon" style={{ width: '50px' }} />
             <input
@@ -41,7 +41,7 @@ class Login extends Component {
               name="username"
               value={username}
               onChange={this.handleChange}
-              placeholder="Your username "/>
+              placeholder="Your username " />
           </div>
           <div className="user-container">
             <img src="/images/lock.svg" alt="password" title="password Icon" />
