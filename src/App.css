@@ -1,40 +1,69 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
 .container {
-    width: 100%;
-    background: #ff9e30;
-    background: -moz-linear-gradient(top, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, #ff9e30), color-stop(0%, #ffcc00), color-stop(0%, #f6290c), color-stop(0%, #ffcc00), color-stop(100%, #ff9e30));
-    background: -webkit-linear-gradient(top, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
-    background: -o-linear-gradient(top, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
-    background: -ms-linear-gradient(top, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
-    background: linear-gradient(to bottom, #ff9e30 0%, #ffcc00 0%, #f6290c 0%, #ffcc00 0%, #ff9e30 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9e30', endColorstr='#ff9e30', GradientType=0);
-    box-sizing: border-box;
-    padding:0 10px 100px 10px;
-    
+  width: 99%;
+  margin: 0 auto;
 }
 
-.footer-menu{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around;
-    align-items:baseline;
-    padding:20px 0 20px 0;
-    width:100%;
-    background-image: url(/images/beerfoam.png);
-    background-repeat: no-repeat;
-   position:fixed;
-    left:0;
-    top: 0;
-    margin:0;
-    box-shadow: 3px 3px 5px black;
-    }
-
-.brand{
-    width:64px;
-    display:flex;
-    flex-direction:row;
-    justify-content:flex-end;
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.brand img{
-    width:64px;
+
+#logo-container {
+  width: 50%;
+}
+
+#logo {
+  width: 100%;
+}
+
+#logo-container h1 {
+  text-align: center;
+}
+
+.form-container {
+  width: 75%;
+}
+
+.user-container{
+    width:50%;
+}
+
+..user-container img{
+    width:50px;
+}
+
+@media (min-width: 480px) {
+  h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (min-width: 760px) {
+  h1 {
+    font-size: 3.5em;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 4.5em;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 6em;
+  }
 }

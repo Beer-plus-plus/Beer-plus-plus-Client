@@ -5,15 +5,19 @@ import { withAuth } from '../../Context/AuthContext';
 import Logo from '../../components/Logo';
 
 class Login extends Component {
-  state = {
-    username: '',
-    password: '',
-  };
+
+  constructor() {
+    super();
+    this.state = {
+      username: '',
+      password: '',
+    };
+  }
 
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-  };
+  }
 
   handleFormSubmit = e => {
     e.preventDefault();
@@ -37,11 +41,10 @@ class Login extends Component {
               name="username"
               value={username}
               onChange={this.handleChange}
-              placeholder="Your username "
-            />
+              placeholder="Your username "/>
           </div>
           <div className="user-container">
-            <img src="/images/lock.svg" alt="password" title="password Icon" style={{ width: '50px' }} />
+            <img src="/images/lock.svg" alt="password" title="password Icon" />
             <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="****" />
           </div>
           <div className="button-login-singup">

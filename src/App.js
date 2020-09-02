@@ -25,9 +25,9 @@ const App = () => (
   <div className="container">
     <Router>
       <AnonRoute exact path="/" component={Login} />
-      <AnonRoute exact path="/login" component={Login} />
-      <AnonRoute exact path="/signup" component={Signup} />
-      <PrivateRoute exact path="/user" component={UserView} />
+      {/* <AnonRoute exact path="/login" component={Login} />
+      <AnonRoute exact path="/signup" component={Signup} /> */}
+      {/* <PrivateRoute exact path="/user" component={UserView} />
       <PrivateRoute exact path="/beersapidb" component={beersApiDb} />
       <PrivateRoute exact path="/beersdb" component={BeersDB} />
 
@@ -35,7 +35,7 @@ const App = () => (
       <PrivateRoute exact path="/beer/new" component={BeerCreate} />
       <PrivateRoute exact path="/central" component={CentralView} />
       <PrivateRoute exact path="/beers/api/:id" component={BeerApiDetail} />
-      <PrivateRoute exact path="/logout" component={Logout} />
+      <PrivateRoute exact path="/logout" component={Logout} /> */}
     </Router>
   </div>
 );
